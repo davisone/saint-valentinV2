@@ -51,7 +51,7 @@ const TYPING_MESSAGE: Message = {
 const RESPONSE_MESSAGES: Message[] = [
   { id: 101, text: '...', sender: 'them', time: '14:37' },
   { id: 102, text: 'BTRD ?', sender: 'them', time: '14:38' },
-  { id: 103, text: 'Réponds', sender: 'th<em', time: '14:38' },
+  { id: 103, text: 'Réponds', sender: 'them', time: '14:38' },
 ];
 
 const QUICK_REPLIES = ['Oui', 'Non', 'Jsp', '🤔'];
