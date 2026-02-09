@@ -163,6 +163,79 @@
   text-shadow: 1px 1px 0 #000;
 }
 
+.copyrightText {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  text-shadow: 1px 1px 0 #000;
+  opacity: 0.7;
+}
+
+.menuFooter {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.menuLink {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  text-shadow: 1px 1px 0 #000;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.menuLink:hover {
+  color: #ff0;
+}
+
+.menuSide {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menuSideBtn {
+  width: 40px;
+  height: 40px;
+  background: #808080;
+  border: 3px solid;
+  border-color: #fff #3f3f3f #3f3f3f #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuSideBtn:hover {
+  background: #6b6bff;
+}
+
+.skinIcon {
+  width: 20px;
+  height: 24px;
+  background: linear-gradient(180deg, #8B5A2B 0%, #8B5A2B 40%, #00f 40%, #00f 70%, #555 70%);
+}
+
+.achievementIcon {
+  width: 20px;
+  height: 20px;
+  background: #ffd700;
+  border: 2px solid #b8860b;
+}
+
 /* ===== World Page ===== */
 .worldPage {
   position: fixed;
@@ -180,8 +253,6 @@
 
 .sun {
   position: absolute;
-  top: 10%;
-  right: 15%;
   width: 60px;
   height: 60px;
   background: #fff59d;
@@ -190,6 +261,55 @@
   box-shadow:
     0 0 40px #fff59d,
     0 0 80px #ffee58;
+}
+
+.moon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #e8e8e8;
+  border: none;
+  cursor: pointer;
+  border-radius: 0;
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(200, 200, 255, 0.3);
+}
+
+.moon::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  width: 10px;
+  height: 10px;
+  background: #c0c0c0;
+  border-radius: 50%;
+}
+
+.moon::after {
+  content: '';
+  position: absolute;
+  bottom: 15px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: #d0d0d0;
+  border-radius: 50%;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  box-shadow: 0 0 4px #fff;
 }
 
 .cloud {
@@ -256,6 +376,66 @@
   border: 1px solid #606060;
 }
 
+.cobblestone {
+  background:
+    linear-gradient(45deg, #707070 25%, transparent 25%),
+    linear-gradient(-45deg, #707070 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #606060 75%),
+    linear-gradient(-45deg, transparent 75%, #606060 75%);
+  background-size: 10px 10px;
+  background-color: #808080;
+  border: 1px solid #505050;
+}
+
+.coal {
+  background: #2a2a2a;
+  border: 1px solid #1a1a1a;
+  position: relative;
+}
+
+.coal::after {
+  content: '';
+  position: absolute;
+  inset: 20%;
+  background: #111;
+}
+
+.iron {
+  background: #c0a080;
+  border: 1px solid #a08060;
+  position: relative;
+}
+
+.iron::after {
+  content: '';
+  position: absolute;
+  inset: 25%;
+  background: #d4b896;
+}
+
+/* Block breaking */
+.block.breaking {
+  animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+.breakOverlay {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0.3) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: var(--break-progress, 0);
+}
+
 /* ===== Collectibles ===== */
 .collectible {
   position: absolute;
@@ -318,10 +498,27 @@
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  position: relative;
+  cursor: pointer;
 }
 
 .hotbarSlot.filled {
   background: #5a5a5a;
+}
+
+.hotbarSlot.selected {
+  border-color: #fff #fff #fff #fff;
+  border-width: 3px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.slotNumber {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 10px;
+  color: #888;
+  pointer-events: none;
 }
 
 .diamondIcon { color: #00ffff; }
@@ -621,6 +818,333 @@
 .achievementName {
   color: #fff;
   font-size: 18px;
+}
+
+/* ===== Mobs ===== */
+.mob {
+  position: absolute;
+  bottom: 22%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobBody {
+  width: 30px;
+  height: 20px;
+}
+
+.mobHead {
+  width: 20px;
+  height: 16px;
+  position: absolute;
+  top: -8px;
+  left: -5px;
+}
+
+.mobLegs {
+  display: flex;
+  gap: 10px;
+  margin-top: -2px;
+}
+
+.mobLegs::before,
+.mobLegs::after {
+  content: '';
+  width: 6px;
+  height: 12px;
+}
+
+/* Pig */
+.pig .mobBody {
+  background: #f0a0a0;
+}
+
+.pig .mobHead {
+  background: #f0a0a0;
+}
+
+.pig .mobHead::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 6px;
+  background: #ffb6b6;
+  border-radius: 2px;
+}
+
+.pig .mobLegs::before,
+.pig .mobLegs::after {
+  background: #f0a0a0;
+}
+
+/* Cow */
+.cow .mobBody {
+  background: linear-gradient(90deg, #4a3728 0%, #4a3728 30%, #fff 30%, #fff 50%, #4a3728 50%, #4a3728 80%, #fff 80%);
+}
+
+.cow .mobHead {
+  background: #4a3728;
+  width: 22px;
+}
+
+.cow .mobHead::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 6px;
+  background: #c4a484;
+}
+
+.cow .mobLegs::before,
+.cow .mobLegs::after {
+  background: #4a3728;
+}
+
+/* Chicken */
+.chicken .mobBody {
+  background: #fff;
+  width: 16px;
+  height: 14px;
+}
+
+.chicken .mobHead {
+  background: #fff;
+  width: 12px;
+  height: 12px;
+  top: -6px;
+  left: -2px;
+}
+
+.chicken .mobHead::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 4px;
+  width: 6px;
+  height: 4px;
+  background: #ffa500;
+}
+
+.chicken .mobHead::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  background: #ff0000;
+}
+
+.chickenLegs {
+  display: flex;
+  gap: 6px;
+  margin-top: -2px;
+}
+
+.chickenLegs::before,
+.chickenLegs::after {
+  content: '';
+  width: 3px;
+  height: 10px;
+  background: #ffa500;
+}
+
+/* Sheep */
+.sheep .mobBody {
+  background: #e8e8e8;
+  border-radius: 4px;
+}
+
+.sheep .mobHead {
+  background: #d0d0d0;
+}
+
+.sheep .mobLegs::before,
+.sheep .mobLegs::after {
+  background: #a0a0a0;
+}
+
+/* ===== Crosshair ===== */
+.crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.crosshairH,
+.crosshairV {
+  position: absolute;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+
+.crosshairH {
+  width: 20px;
+  height: 2px;
+  left: -10px;
+  top: -1px;
+}
+
+.crosshairV {
+  width: 2px;
+  height: 20px;
+  left: -1px;
+  top: -10px;
+}
+
+/* ===== Health Bar ===== */
+.healthBar {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateX(-120px);
+  display: flex;
+  gap: 1px;
+  z-index: 50;
+}
+
+.heart {
+  width: 16px;
+  height: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.heart::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1a0a0a;
+  clip-path: polygon(50% 100%, 0% 35%, 10% 0%, 40% 0%, 50% 20%, 60% 0%, 90% 0%, 100% 35%);
+}
+
+.heart.full::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #e50914;
+  clip-path: polygon(50% 100%, 0% 35%, 10% 0%, 40% 0%, 50% 20%, 60% 0%, 90% 0%, 100% 35%);
+}
+
+/* ===== Hunger Bar ===== */
+.hungerBar {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateX(120px);
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1px;
+  z-index: 50;
+}
+
+.hunger {
+  width: 16px;
+  height: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.hunger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1a0a0a;
+  border-radius: 50% 50% 40% 40%;
+}
+
+.hunger.full::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #c4a000;
+  border-radius: 50% 50% 40% 40%;
+}
+
+/* ===== XP Bar ===== */
+.xpBar {
+  position: fixed;
+  bottom: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 364px;
+  height: 8px;
+  background: #1a1a1a;
+  border: 1px solid #000;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.xpFill {
+  height: 100%;
+  background: #7fff00;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3);
+}
+
+.xpLevel {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #7fff00;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+/* ===== Time Indicator ===== */
+.timeIndicator {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  z-index: 50;
+}
+
+/* ===== Crafting Animation ===== */
+.craftingStatus {
+  width: 100%;
+  height: 40px;
+  background: #666;
+  border: 3px solid;
+  border-color: #888 #444 #444 #888;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 0 #333;
+  margin-bottom: 10px;
+}
+
+.heartResultSvg {
+  width: 36px;
+  height: 36px;
+  color: #e50914;
 }
 
 /* ===== Easter Egg Tooltip ===== */
