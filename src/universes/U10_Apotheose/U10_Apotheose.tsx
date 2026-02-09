@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { UniverseShell } from '../../components/core/UniverseShell';
 import { ParticleField } from '../../components/ui/ParticleField';
 import { Vignette } from '../../components/ui/Vignette';
+import { FloatingHearts, Confetti, Sparkles } from '../../components/effects';
 import { useGameStore } from '../../store/useGameStore';
 import { MouseState } from '../../hooks/useMousePhysics';
 import styles from './U10_Apotheose.module.css';
@@ -107,6 +108,11 @@ function U10_Apotheose({ mouse }: Props) {
             animate={{ opacity: 1 }}
             transition={{ duration: 3 }}
           >
+            {/* Extra effects for the finale */}
+            <FloatingHearts count={25} colors={['#FF3B30', '#FF6B6B', '#FFD700', '#FF69B4']} />
+            <Sparkles count={30} color="#FFD700" />
+            <Confetti active={true} duration={10000} />
+
             <motion.div
               className={styles.loveMessage}
               initial={{ y: 30, opacity: 0 }}

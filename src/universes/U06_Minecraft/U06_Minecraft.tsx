@@ -13,6 +13,15 @@ import {
   CheckIcon,
   ArrowRightIcon,
   CraftingTableIcon,
+  MinecraftHeart,
+  MinecraftHunger,
+  MinecraftCreeper,
+  MinecraftSteve,
+  MinecraftSword,
+  MinecraftPickaxe,
+  MinecraftAxe,
+  MinecraftEnderPearl,
+  MinecraftTNT,
 } from '../../components/icons/SvgIcons';
 import styles from './U06_Minecraft.module.css';
 
@@ -540,18 +549,22 @@ function U06_Minecraft({ mouse }: Props) {
         {[...Array(10)].map((_, i) => (
           <button
             key={i}
-            className={`${styles.heart} ${i < health ? styles.full : styles.empty}`}
+            className={styles.heartButton}
             onClick={(e) => showEasterEgg('health', e)}
-          />
+          >
+            <MinecraftHeart size={18} filled={i < health} />
+          </button>
         ))}
       </div>
       <div className={styles.hungerBar}>
         {[...Array(10)].map((_, i) => (
           <button
             key={i}
-            className={`${styles.hunger} ${i < hunger ? styles.full : styles.empty}`}
+            className={styles.hungerButton}
             onClick={(e) => showEasterEgg('hunger', e)}
-          />
+          >
+            <MinecraftHunger size={18} filled={i < hunger} />
+          </button>
         ))}
       </div>
       <div className={styles.xpBar} onClick={(e: React.MouseEvent) => showEasterEgg('xp', e)}>

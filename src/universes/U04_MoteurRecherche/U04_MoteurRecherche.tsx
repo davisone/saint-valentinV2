@@ -4,6 +4,18 @@ import { UniverseShell } from '../../components/core/UniverseShell';
 import { OuiButton } from '../../components/core/OuiButton';
 import { useUniversePuzzle } from '../../hooks/useUniversePuzzle';
 import { MouseState } from '../../hooks/useMousePhysics';
+import {
+  GoogleLogo,
+  GoogleAppsIcon,
+  GoogleSearchIcon,
+  GoogleMicIcon,
+  GoogleCameraIcon,
+  GmailIcon,
+  YouTubeIconFull,
+  GoogleDriveIcon,
+  GoogleMapsIcon,
+  GoogleCalendarIcon,
+} from '../../components/icons/SvgIcons';
 import styles from './U04_MoteurRecherche.module.css';
 
 interface Props {

@@ -454,3 +454,365 @@ export const ChevronRightIcon: React.FC<{ className?: string }> = ({ className }
     <polyline points="9 18 15 12 9 6"/>
   </svg>
 );
+
+// ============================================
+// GOOGLE ICONS
+// ============================================
+
+export const GoogleLogo: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+  </svg>
+);
+
+export const GoogleAppsIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <circle cx="5" cy="5" r="2.5"/>
+    <circle cx="12" cy="5" r="2.5"/>
+    <circle cx="19" cy="5" r="2.5"/>
+    <circle cx="5" cy="12" r="2.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <circle cx="19" cy="12" r="2.5"/>
+    <circle cx="5" cy="19" r="2.5"/>
+    <circle cx="12" cy="19" r="2.5"/>
+    <circle cx="19" cy="19" r="2.5"/>
+  </svg>
+);
+
+export const GoogleSearchIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#9AA0A6"/>
+  </svg>
+);
+
+export const GoogleMicIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="#4285F4"/>
+    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill="#34A853"/>
+  </svg>
+);
+
+export const GoogleCameraIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <path d="M9.5 6.5v3h-3v-3h3M11 5H5v6h6V5zm-1.5 9.5v3h-3v-3h3M11 13H5v6h6v-6zm6.5-6.5v3h-3v-3h3M19 5h-6v6h6V5zm-6 8h1.5v1.5H13V13zm1.5 1.5H16V16h-1.5v-1.5zM16 13h1.5v1.5H16V13zm-3 3h1.5v1.5H13V16zm1.5 1.5H16V19h-1.5v-1.5zM16 16h1.5v1.5H16V16zm1.5-1.5H19V16h-1.5v-1.5zm0 3H19V19h-1.5v-1.5zM19 13h-1.5v1.5H19V13z" fill="#4285F4"/>
+  </svg>
+);
+
+export const GmailIcon: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#F4F4F4"/>
+    <path d="M4 6l8 5 8-5H4z" fill="#EA4335"/>
+    <path d="M4 6v12h4V10l4 3 4-3v8h4V6l-8 5-8-5z" fill="#C5221F"/>
+    <path d="M4 6l8 5 8-5v2l-8 5-8-5V6z" fill="#A0130C"/>
+  </svg>
+);
+
+export const YouTubeIconFull: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/>
+  </svg>
+);
+
+export const GoogleDriveIcon: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <path d="M8 16l-4-7h8l4 7H8z" fill="#4285F4"/>
+    <path d="M16 16l-4-7h8l4 7h-8z" fill="#FBBC05"/>
+    <path d="M4 9l4 7 4-7H4z" fill="#34A853"/>
+    <path d="M8 2l4 7h8L16 2H8z" fill="#EA4335"/>
+    <path d="M8 2l4 7-4 7H0l8-14z" fill="#4285F4"/>
+    <path d="M12 9l4 7h8l-4-7h-8z" fill="#34A853"/>
+  </svg>
+);
+
+export const GoogleMapsIcon: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"/>
+    <circle cx="12" cy="9" r="2.5" fill="white"/>
+  </svg>
+);
+
+export const GoogleCalendarIcon: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="18" rx="2" fill="#4285F4"/>
+    <rect x="3" y="4" width="18" height="4" fill="#1A73E8"/>
+    <rect x="5" y="10" width="4" height="4" fill="white"/>
+    <rect x="10" y="10" width="4" height="4" fill="white"/>
+    <rect x="15" y="10" width="4" height="4" fill="white"/>
+    <rect x="5" y="15" width="4" height="4" fill="white"/>
+    <rect x="10" y="15" width="4" height="4" fill="white"/>
+  </svg>
+);
+
+// ============================================
+// MINECRAFT DETAILED ICONS
+// ============================================
+
+export const MinecraftSword: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    {/* Blade */}
+    <rect x="20" y="2" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="16" y="6" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="20" y="6" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="12" y="10" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="16" y="10" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="8" y="14" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="12" y="14" width="4" height="4" fill="#6B6B6B"/>
+    {/* Handle */}
+    <rect x="4" y="18" width="4" height="4" fill="#8B4513"/>
+    <rect x="8" y="18" width="4" height="4" fill="#654321"/>
+    {/* Guard */}
+    <rect x="6" y="22" width="4" height="4" fill="#5C4033"/>
+    <rect x="10" y="22" width="4" height="4" fill="#5C4033"/>
+    {/* Pommel */}
+    <rect x="2" y="26" width="4" height="4" fill="#8B4513"/>
+  </svg>
+);
+
+export const MinecraftPickaxe: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    {/* Pick head */}
+    <rect x="2" y="2" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="6" y="2" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="10" y="2" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="14" y="2" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="18" y="2" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="6" y="6" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="10" y="6" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="14" y="6" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="10" y="10" width="4" height="4" fill="#6B6B6B"/>
+    {/* Handle */}
+    <rect x="14" y="10" width="4" height="4" fill="#8B4513"/>
+    <rect x="18" y="14" width="4" height="4" fill="#654321"/>
+    <rect x="22" y="18" width="4" height="4" fill="#8B4513"/>
+    <rect x="26" y="22" width="4" height="4" fill="#654321"/>
+  </svg>
+);
+
+export const MinecraftAxe: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    {/* Axe head */}
+    <rect x="2" y="2" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="6" y="2" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="2" y="6" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="6" y="6" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="10" y="6" width="4" height="4" fill="#8B8B8B"/>
+    <rect x="6" y="10" width="4" height="4" fill="#6B6B6B"/>
+    <rect x="10" y="10" width="4" height="4" fill="#6B6B6B"/>
+    {/* Handle */}
+    <rect x="14" y="14" width="4" height="4" fill="#8B4513"/>
+    <rect x="18" y="18" width="4" height="4" fill="#654321"/>
+    <rect x="22" y="22" width="4" height="4" fill="#8B4513"/>
+    <rect x="26" y="26" width="4" height="4" fill="#654321"/>
+  </svg>
+);
+
+export const MinecraftHeart: React.FC<{ className?: string; size?: number; filled?: boolean }> = ({ className, size = 16, filled = true }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 16 16" fill="none">
+    <rect x="2" y="2" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="6" y="2" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="10" y="2" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="0" y="4" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="4" y="4" width="4" height="4" fill={filled ? "#CC0000" : "#2C2C2C"}/>
+    <rect x="8" y="4" width="4" height="4" fill={filled ? "#CC0000" : "#2C2C2C"}/>
+    <rect x="12" y="4" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="0" y="8" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="4" y="8" width="4" height="4" fill={filled ? "#CC0000" : "#2C2C2C"}/>
+    <rect x="8" y="8" width="4" height="4" fill={filled ? "#CC0000" : "#2C2C2C"}/>
+    <rect x="12" y="8" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="2" y="10" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="6" y="10" width="4" height="4" fill={filled ? "#CC0000" : "#2C2C2C"}/>
+    <rect x="10" y="10" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="4" y="12" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="8" y="12" width="4" height="4" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+    <rect x="6" y="14" width="4" height="2" fill={filled ? "#FF0000" : "#3C3C3C"}/>
+  </svg>
+);
+
+export const MinecraftHunger: React.FC<{ className?: string; size?: number; filled?: boolean }> = ({ className, size = 16, filled = true }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 16 16" fill="none">
+    {/* Drumstick shape */}
+    <rect x="4" y="2" width="4" height="4" fill={filled ? "#8B4513" : "#3C3C3C"}/>
+    <rect x="8" y="2" width="4" height="4" fill={filled ? "#CD853F" : "#3C3C3C"}/>
+    <rect x="2" y="6" width="4" height="4" fill={filled ? "#8B4513" : "#3C3C3C"}/>
+    <rect x="6" y="6" width="4" height="4" fill={filled ? "#CD853F" : "#3C3C3C"}/>
+    <rect x="10" y="6" width="4" height="4" fill={filled ? "#8B4513" : "#3C3C3C"}/>
+    <rect x="4" y="10" width="4" height="4" fill={filled ? "#DEB887" : "#4C4C4C"}/>
+    <rect x="8" y="10" width="4" height="4" fill={filled ? "#F5DEB3" : "#5C5C5C"}/>
+    <rect x="6" y="12" width="4" height="4" fill={filled ? "#F5DEB3" : "#5C5C5C"}/>
+  </svg>
+);
+
+export const MinecraftCreeper: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    {/* Head base */}
+    <rect width="32" height="32" fill="#4CAF50"/>
+    {/* Dark patches */}
+    <rect x="0" y="0" width="8" height="8" fill="#388E3C"/>
+    <rect x="16" y="0" width="8" height="8" fill="#388E3C"/>
+    <rect x="8" y="8" width="8" height="8" fill="#388E3C"/>
+    <rect x="24" y="8" width="8" height="8" fill="#388E3C"/>
+    <rect x="0" y="16" width="8" height="8" fill="#388E3C"/>
+    <rect x="16" y="24" width="8" height="8" fill="#388E3C"/>
+    {/* Eyes */}
+    <rect x="4" y="8" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="8" y="8" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="20" y="8" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="24" y="8" width="4" height="4" fill="#1B1B1B"/>
+    {/* Mouth */}
+    <rect x="12" y="16" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="16" y="16" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="8" y="20" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="12" y="20" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="16" y="20" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="20" y="20" width="4" height="4" fill="#1B1B1B"/>
+    <rect x="8" y="24" width="4" height="8" fill="#1B1B1B"/>
+    <rect x="20" y="24" width="4" height="8" fill="#1B1B1B"/>
+  </svg>
+);
+
+export const MinecraftSteve: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    {/* Face base */}
+    <rect width="32" height="32" fill="#D2A679"/>
+    {/* Hair */}
+    <rect x="0" y="0" width="32" height="8" fill="#3E2723"/>
+    <rect x="0" y="8" width="4" height="8" fill="#3E2723"/>
+    <rect x="28" y="8" width="4" height="8" fill="#3E2723"/>
+    {/* Eyes */}
+    <rect x="4" y="12" width="4" height="4" fill="#FFFFFF"/>
+    <rect x="8" y="12" width="4" height="4" fill="#4169E1"/>
+    <rect x="20" y="12" width="4" height="4" fill="#4169E1"/>
+    <rect x="24" y="12" width="4" height="4" fill="#FFFFFF"/>
+    {/* Nose */}
+    <rect x="12" y="16" width="8" height="4" fill="#B8956C"/>
+    {/* Mouth */}
+    <rect x="8" y="24" width="16" height="4" fill="#8B5A4E"/>
+    <rect x="12" y="24" width="8" height="2" fill="#FF9999"/>
+  </svg>
+);
+
+export const MinecraftEnderPearl: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="10" fill="#1A237E"/>
+    <circle cx="12" cy="12" r="7" fill="#283593"/>
+    <circle cx="12" cy="12" r="4" fill="#3949AB"/>
+    <circle cx="10" cy="10" r="2" fill="#7986CB"/>
+  </svg>
+);
+
+export const MinecraftTNT: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    <rect width="32" height="32" fill="#FF0000"/>
+    <rect x="0" y="4" width="32" height="8" fill="#FFFFFF"/>
+    <rect x="0" y="20" width="32" height="8" fill="#FFFFFF"/>
+    <text x="16" y="16" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#FF0000" fontFamily="monospace">TNT</text>
+  </svg>
+);
+
+// ============================================
+// ADDITIONAL UTILITY ICONS
+// ============================================
+
+export const VolumeIcon: React.FC<{ className?: string; level?: number }> = ({ className, level = 2 }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+    {level >= 1 && <path d="M14 11.5c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>}
+    {level >= 2 && <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>}
+  </svg>
+);
+
+export const VolumeMuteIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+    <path d="M16.5 12l1.5-1.5L19.5 12l1.5-1.5-1.5-1.5 1.5-1.5-1.5-1.5-1.5 1.5-1.5-1.5L15 9l1.5 1.5L15 12z"/>
+  </svg>
+);
+
+export const FullscreenIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 14H5v5h5v-2H7v-3zM5 10h2V7h3V5H5v5zM17 17h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+  </svg>
+);
+
+export const SubtitlesIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"/>
+  </svg>
+);
+
+export const SettingsGearIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+  </svg>
+);
+
+export const BluetoothIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/>
+  </svg>
+);
+
+export const AirDropIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+    <circle cx="12" cy="12" r="3"/>
+    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+  </svg>
+);
+
+export const BrightnessIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+  </svg>
+);
+
+export const FocusModeIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+  </svg>
+);
+
+export const KeyboardBrightnessIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <rect x="2" y="14" width="20" height="8" rx="2" fill="currentColor"/>
+    <rect x="4" y="16" width="4" height="2" fill="#333"/>
+    <rect x="10" y="16" width="4" height="2" fill="#333"/>
+    <rect x="16" y="16" width="4" height="2" fill="#333"/>
+    <rect x="6" y="19" width="12" height="2" fill="#333"/>
+    <path d="M12 2L9 6h2v4h2V6h2l-3-4z"/>
+  </svg>
+);
+
+// ============================================
+// ANIMATED / SPECIAL ICONS
+// ============================================
+
+export const LoadingSpinner: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeOpacity="0.25"/>
+    <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+      <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
+    </path>
+  </svg>
+);
+
+export const HeartPulse: React.FC<{ className?: string; size?: number }> = ({ className, size = 32 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 32 32" fill="none">
+    <path d="M16 28l-1.4-1.3C7.4 20.1 3 16.1 3 11.5 3 7.9 5.9 5 9.5 5c2 0 4 .9 5.2 2.4L16 9l1.3-1.6C18.5 5.9 20.5 5 22.5 5 26.1 5 29 7.9 29 11.5c0 4.6-4.4 8.6-11.6 15.2L16 28z" fill="#FF3B30">
+      <animate attributeName="opacity" values="1;0.6;1" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="0.8s" repeatCount="indefinite" additive="sum"/>
+  </svg>
+);
+
+export const SparkleIcon: React.FC<{ className?: string; size?: number }> = ({ className, size = 24 }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 0L14 8L22 10L14 12L12 20L10 12L2 10L10 8L12 0Z"/>
+    <path d="M19 2L20 5L23 6L20 7L19 10L18 7L15 6L18 5L19 2Z" opacity="0.6"/>
+    <path d="M5 14L6 16L8 17L6 18L5 20L4 18L2 17L4 16L5 14Z" opacity="0.6"/>
+  </svg>
+);

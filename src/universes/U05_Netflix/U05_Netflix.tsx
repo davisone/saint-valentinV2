@@ -28,16 +28,17 @@ type Phase = 'profiles' | 'browse' | 'detail' | 'done';
 interface Profile {
   id: number;
   name: string;
-  icon: string;
+  icon?: string;
+  image?: string;
   message: string;
 }
 
 const PROFILES: Profile[] = [
-  { id: 1, name: 'Julie', icon: '👩', message: 'Allez c\'est parti.' },
-  { id: 2, name: 'Roy', icon: '🐱', message: 'C\'est ton chat ca, il sait pas cliquer.' },
-  { id: 3, name: 'Nadine', icon: '👩‍🦳', message: 'Ta mère ?' },
-  { id: 4, name: 'Alexis', icon: '👦', message: 'Ton frère a son propre compte normalement.' },
-  { id: 5, name: 'Eric', icon: '👦', message: 'Il regarde encore la casa de papel' },
+  { id: 1, name: 'Julie', image: '/D9A58B40-06B1-4657-906E-1E22DCA3CFDA_1_105_c.jpeg', message: 'Allez c\'est parti.' },
+  { id: 2, name: 'Evan', image: '/BAE90C47-2A1D-4357-9EE0-BCE33B1721EE_1_105_c.jpeg', message: 'C\'est moi ça, tu peux pas te connecter.' },
+  { id: 3, name: 'Roy', image: '/IMG_4950.JPG', message: 'C\'est ton chat ca, il sait pas cliquer.' },
+  { id: 4, name: 'Nadine', icon: '👩‍🦳', message: 'Ta mère ?' },
+  { id: 5, name: 'Alexis', icon: '👦', message: 'Ton frère a son propre compte normalement.' },
 ];
 
 interface Show {
@@ -250,7 +251,11 @@ function U05_Netflix({ mouse }: Props) {
             onClick={(e) => handleProfileSelect(profile, e)}
           >
             <div className={styles.profileAvatar}>
-              <span>{profile.icon}</span>
+              {profile.image ? (
+                <img src={profile.image} alt={profile.name} className={styles.profileImage} />
+              ) : (
+                <span>{profile.icon}</span>
+              )}
             </div>
             <span className={styles.profileName}>{profile.name}</span>
           </button>
