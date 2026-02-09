@@ -88,17 +88,6 @@ function U10_Apotheose({ mouse }: Props) {
     }
   }, [clickCount]);
 
-  // Trigger finale after enough clicks
-  useEffect(() => {
-    if (clickCount >= 10 && phase === 'fireworks') {
-      const timer = setTimeout(() => {
-        setPhase('finale');
-        setTimeout(() => setComplete(true), 5000);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [clickCount, phase, setComplete]);
-
   const createFirework = useCallback((e: React.MouseEvent) => {
     if (phase !== 'fireworks') return;
 
@@ -125,7 +114,9 @@ function U10_Apotheose({ mouse }: Props) {
     const newFirework: Firework = { id, x, y, color, message, particles };
 
     setFireworks(prev => [...prev, newFirework]);
-    setClickCount(prev => prev + 1);
+
+    const newClickCount = clickCount + 1;
+    setClickCount(newClickCount);
 
     if (!revealedMessages.includes(message)) {
       setRevealedMessages(prev => [...prev, message]);
@@ -135,7 +126,15 @@ function U10_Apotheose({ mouse }: Props) {
     setTimeout(() => {
       setFireworks(prev => prev.filter(f => f.id !== id));
     }, 2500);
-  }, [phase, clickCount, revealedMessages]);
+
+    // Trigger finale at 10 clicks
+    if (newClickCount >= 10) {
+      setTimeout(() => {
+        setPhase('finale');
+        setTimeout(() => setComplete(true), 5000);
+      }, 1500);
+    }
+  }, [phase, clickCount, revealedMessages, setComplete]);
 
   return (
     <UniverseShell ambientColor="#0a0a20">
