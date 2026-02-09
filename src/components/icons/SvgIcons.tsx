@@ -442,3 +442,15 @@ export const ArrowRightIcon: React.FC<{ className?: string }> = ({ className }) 
     <path d="M4 12l8-8v5h8v6h-8v5z"/>
   </svg>
 );
+
+export const ChevronLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <polyline points="15 18 9 12 15 6"/>
+  </svg>
+);
+
+export const ChevronRightIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <polyline points="9 18 15 12 9 6"/>
+  </svg>
+);
