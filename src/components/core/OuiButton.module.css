@@ -1,0 +1,82 @@
+.ouiButton {
+  position: fixed;
+  z-index: 100;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ff6b8a 0%, #ff2d55 100%);
+  color: white;
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+  outline: none;
+}
+
+.ouiButton:hover {
+  background: linear-gradient(135deg, #ff8fa8 0%, #ff4d6f 100%);
+}
+
+.flicker {
+  animation: flicker 2s ease-in-out infinite;
+}
+
+.hesitate {
+  animation: tremble 0.15s ease-in-out infinite;
+}
+
+.serene {
+  animation: float 4s ease-in-out infinite;
+}
+
+.vulnerable {
+  animation: pulse 2s ease-in-out infinite;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  10% { opacity: 0.4; }
+  12% { opacity: 1; }
+  50% { opacity: 1; }
+  52% { opacity: 0.3; }
+  54% { opacity: 1; }
+}
+
+@keyframes tremble {
+  0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+  25% { transform: translate(-50%, -50%) translateX(-2px); }
+  75% { transform: translate(-50%, -50%) translateX(2px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-8px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.trailSvg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.trailLine {
+  fill: none;
+  stroke: rgba(255, 215, 0, 0.4);
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: blur(2px);
+}

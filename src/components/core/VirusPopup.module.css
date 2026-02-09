@@ -1,0 +1,260 @@
+/* ============= Base Popup ============= */
+.popup {
+  position: fixed;
+  min-width: 260px;
+  max-width: 400px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
+  animation: popupBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  cursor: default;
+}
+
+@keyframes popupBounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.disappearing {
+  animation: popupShrink 0.3s ease-in forwards !important;
+  pointer-events: none;
+}
+
+@keyframes popupShrink {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.shaking {
+  animation: popupShake 0.3s ease-in-out infinite !important;
+}
+
+@keyframes popupShake {
+  0%,
+  100% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: -3px;
+  }
+  75% {
+    margin-left: 3px;
+  }
+}
+
+/* ============= Windows XP Style ============= */
+.windowsTitleBar {
+  background: linear-gradient(
+    180deg,
+    #0058e6 0%,
+    #3a93ff 3%,
+    #0058e6 97%,
+    #003399 100%
+  );
+  padding: 3px 5px 3px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 8px 8px 0 0;
+}
+
+.windowsBody {
+  background: #ece9d8;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  color: #000;
+}
+
+.windowsIcon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.windowsButtons {
+  background: #ece9d8;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px 16px 12px;
+  border-radius: 0 0 4px 4px;
+}
+
+.windowsBtn {
+  padding: 2px 20px;
+  background: #ece9d8;
+  border: 2px outset #fff;
+  border-radius: 3px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  color: #000;
+}
+
+.windowsBtn:active {
+  border-style: inset;
+}
+
+/* ============= Terminal Hacker Style ============= */
+.terminal {
+  background: #0a0a0a;
+  border: 1px solid #00ff00;
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-line;
+  border-radius: 2px;
+}
+
+.terminalPrompt {
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.cursor {
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ============= BSOD Style ============= */
+.bsod {
+  background: #0078d7;
+  color: white;
+  padding: 24px 32px;
+  font-family: 'Segoe UI', 'Helvetica', sans-serif;
+  min-width: 320px;
+  border-radius: 0;
+}
+
+.bsodFrown {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.bsodText {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.bsodPercent {
+  margin-top: 16px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ============= Emoji Alert Style ============= */
+.emoji {
+  background: #fff3cd;
+  border: 3px solid #ffc107;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #856404;
+  font-family: sans-serif;
+}
+
+.emojiIcon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ============= Warning Red Style ============= */
+.warning {
+  background: #dc3545;
+  color: white;
+  border: 3px solid #ff0000;
+  padding: 20px;
+  text-align: center;
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: warningBlink 0.5s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes warningBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    background: #b02a37;
+  }
+}
+
+/* ============= Close Buttons ============= */
+.closeBtn {
+  background: #c42b1c;
+  color: white;
+  border: none;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: #e81123;
+}
+
+.closeBtnWarning {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.closeBtnWarning:hover {
+  background: rgba(0, 0, 0, 0.5);
+}

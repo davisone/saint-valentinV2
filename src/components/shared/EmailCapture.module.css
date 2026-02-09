@@ -1,0 +1,58 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  font-family: 'Georgia', serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.input {
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  text-align: center;
+  width: 280px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: rgba(255, 215, 0, 0.6);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.sealButton {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #8b0000 0%, #4a0000 100%);
+  color: rgba(255, 215, 0, 0.9);
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.5);
+  transition: box-shadow 0.3s;
+}
+
+.sealButton:hover:not(:disabled) {
+  box-shadow: 0 4px 30px rgba(139, 0, 0, 0.8);
+}
+
+.sealButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,21 @@
+.nonButton {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 50;
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+
+.nonButton:hover {
+  color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.1);
+}

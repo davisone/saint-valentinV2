@@ -1,0 +1,11 @@
+.container {
+  position: absolute;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.letter {
+  display: inline-block;
+}

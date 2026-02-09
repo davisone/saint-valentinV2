@@ -1,0 +1,790 @@
+/* ===== YouTube Theme Colors ===== */
+/* Background: #0f0f0f */
+/* Header: #0f0f0f */
+/* Text: #f1f1f1 */
+/* Red: #ff0000 */
+/* Links: #3ea6ff */
+/* Borders: #272727 */
+
+/* ===== Global Page ===== */
+.youtubePage {
+  position: fixed;
+  inset: 0;
+  background: #0f0f0f;
+  color: #f1f1f1;
+  font-family: 'Roboto', Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* ===== Header ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 100;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menuBtn {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: #f1f1f1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menuIcon {
+  font-size: 20px;
+}
+
+.logoBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.playIcon {
+  width: 28px;
+  height: 20px;
+  background: #ff0000;
+  border-radius: 4px;
+  position: relative;
+}
+
+.playIcon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-30%, -50%);
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.logoText {
+  color: #f1f1f1;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+/* ===== Search ===== */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 640px;
+  margin: 0 40px;
+  position: relative;
+}
+
+.searchBox {
+  display: flex;
+  flex: 1;
+  height: 40px;
+  border: 1px solid #303030;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.searchInput {
+  flex: 1;
+  background: #121212;
+  border: none;
+  padding: 0 16px;
+  color: #f1f1f1;
+  font-size: 16px;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #717171;
+}
+
+.searchInput:focus {
+  border: 1px solid #1c62b9;
+}
+
+.searchBtn {
+  width: 64px;
+  background: #222222;
+  border: none;
+  border-left: 1px solid #303030;
+  color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.searchBtn:hover {
+  background: #333333;
+}
+
+.micBtn {
+  width: 40px;
+  height: 40px;
+  background: #222222;
+  border: none;
+  border-radius: 50%;
+  color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.micBtn:hover {
+  background: #333333;
+}
+
+/* ===== Search Suggestions ===== */
+.suggestions {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 48px;
+  background: #212121;
+  border-radius: 12px;
+  padding: 12px 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  color: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background: #333333;
+}
+
+.suggestionIcon {
+  color: #717171;
+}
+
+/* ===== Header Right ===== */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: #f1f1f1;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.iconBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bellIcon {
+  font-size: 22px;
+}
+
+.notifBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ff0000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 1px 4px;
+  border-radius: 8px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.profileBtn {
+  width: 32px;
+  height: 32px;
+  background: #ff0000;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Main Content ===== */
+.mainContent {
+  display: flex;
+  margin-top: 56px;
+  height: calc(100vh - 56px);
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 240px;
+  background: #0f0f0f;
+  padding: 12px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  color: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebarItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebarIcon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+/* ===== Video Grid ===== */
+.videoGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  overflow-y: auto;
+  align-content: start;
+}
+
+.videoCard {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.videoCard:hover {
+  transform: scale(1.02);
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #272727;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.thumbnailEmoji {
+  font-size: 60px;
+}
+
+.thumbnailPlay {
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.thumbnailHeart {
+  font-size: 60px;
+  color: #ff0000;
+  animation: heartPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.targetVideo .thumbnail {
+  background: linear-gradient(135deg, #1a0a0a 0%, #2a0a0a 100%);
+  border: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+.videoInfo {
+  display: flex;
+  gap: 12px;
+  padding: 12px 4px;
+}
+
+.channelAvatar {
+  width: 36px;
+  height: 36px;
+  background: #717171;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.videoMeta {
+  flex: 1;
+  overflow: hidden;
+}
+
+.videoTitle {
+  color: #f1f1f1;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 4px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.channelName {
+  color: #aaa;
+  font-size: 12px;
+  margin: 0 0 2px 0;
+}
+
+.videoStats {
+  color: #aaa;
+  font-size: 12px;
+  margin: 0;
+}
+
+/* ===== Watching Page ===== */
+.watchingPage {
+  position: fixed;
+  inset: 0;
+  background: #0f0f0f;
+  color: #f1f1f1;
+  font-family: 'Roboto', Arial, sans-serif;
+  overflow-y: auto;
+}
+
+.watchContent {
+  margin-top: 56px;
+  padding: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.videoPlayerContainer {
+  width: 100%;
+}
+
+.videoPlayer {
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.playerArea {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.romanticMessage {
+  text-align: center;
+}
+
+.messageHeart {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.messageText {
+  color: #aaa;
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.playerControls {
+  background: #0f0f0f;
+  padding: 8px 16px;
+}
+
+.progressBar {
+  height: 4px;
+  background: #3d3d3d;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.progressFilled {
+  width: 21%;
+  height: 100%;
+  background: #ff0000;
+  border-radius: 2px;
+}
+
+.controlButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controlBtn {
+  background: none;
+  border: none;
+  color: #f1f1f1;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.timeDisplay {
+  color: #ddd;
+  font-size: 13px;
+  margin-left: 16px;
+}
+
+.rightControls {
+  display: flex;
+  gap: 8px;
+}
+
+/* ===== Video Details (Below Video) ===== */
+.videoDetails {
+  padding: 16px 0;
+}
+
+.watchTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #f1f1f1;
+}
+
+/* Action buttons row - PROMINENT */
+.actionButtonsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid #272727;
+  margin-bottom: 16px;
+}
+
+.channelRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+
+.channelMeta {
+  flex: 1;
+}
+
+.channelAvatarLarge {
+  width: 40px;
+  height: 40px;
+  background: #ff0000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.channelNameLarge {
+  color: #f1f1f1;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.subscriberCount {
+  color: #aaa;
+  font-size: 12px;
+  margin: 2px 0 0 0;
+}
+
+.subscribeBtn {
+  background: #fff;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.subscribeBtn:hover {
+  background: #d9d9d9;
+}
+
+.descriptionBox {
+  background: #272727;
+  border-radius: 12px;
+  padding: 12px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.descriptionText {
+  margin-top: 8px;
+  color: #f1f1f1;
+}
+
+.videoActions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.channelInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== Action Buttons ===== */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.actionBtn {
+  background: #272727;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  color: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionBtn:hover {
+  background: #3f3f3f;
+}
+
+/* ===== OuiButton as Like Button ===== */
+.likeButton {
+  position: relative !important;
+  z-index: auto !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  background: #272727 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 10px 16px !important;
+  color: #f1f1f1 !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+  font-family: 'Roboto', Arial, sans-serif !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  box-shadow: none !important;
+  letter-spacing: normal !important;
+  animation: none !important;
+  transition: background 0.2s ease !important;
+}
+
+.likeButton:hover {
+  background: #ff0000 !important;
+  color: #fff !important;
+}
+
+/* ===== Done Overlay ===== */
+.doneOverlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 50%, #0f0f0f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+
+.doneContent {
+  text-align: center;
+}
+
+.doneHeart {
+  font-size: 100px;
+  color: #ff0000;
+  animation: heartPulse 1s ease-in-out infinite;
+  margin-bottom: 24px;
+}
+
+.doneMessage {
+  color: #f1f1f1;
+  font-size: 24px;
+  font-family: 'Georgia', serif;
+}
+
+/* ===== Easter Egg Tooltip ===== */
+.easterEggTooltip {
+  position: fixed;
+  z-index: 1000;
+  background: #272727;
+  color: #f1f1f1;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: tooltipFade 2.5s ease-in-out forwards;
+  /* Responsive: limit width and allow wrapping */
+  max-width: min(90vw, 300px);
+  white-space: normal;
+  text-align: center;
+  word-wrap: break-word;
+  /* Keep within viewport */
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes tooltipFade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+}
+
+/* ===== SVG Icons ===== */
+.menuIconSvg {
+  width: 20px;
+  height: 20px;
+  color: #f1f1f1;
+}
+
+.ytLogo {
+  height: 20px;
+  width: auto;
+}
+
+.searchIconSvg {
+  width: 20px;
+  height: 20px;
+  color: #f1f1f1;
+}
+
+.micIconSvg {
+  width: 18px;
+  height: 18px;
+  color: #f1f1f1;
+}
+
+.suggestionIconSvg {
+  width: 16px;
+  height: 16px;
+  color: #717171;
+  flex-shrink: 0;
+}
+
+.bellIconSvg {
+  width: 22px;
+  height: 22px;
+  color: #f1f1f1;
+}
+
+.sidebarIconSvg {
+  width: 22px;
+  height: 22px;
+  color: #f1f1f1;
+  flex-shrink: 0;
+}
+
+.controlIconSvg {
+  width: 20px;
+  height: 20px;
+  color: #f1f1f1;
+}
+
+.likeIconSvg {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+}
+
+.actionIconSvg {
+  width: 18px;
+  height: 18px;
+}
+
+.doneThumbSvg {
+  width: 80px;
+  height: 80px;
+  color: #ff0000;
+}
