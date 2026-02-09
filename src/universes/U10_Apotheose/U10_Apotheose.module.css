@@ -1,99 +1,252 @@
-.goldenGradient {
+/* ===== Night Sky ===== */
+.nightSky {
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
+  background: linear-gradient(180deg, #0a0a20 0%, #1a1a40 50%, #2a1a3a 100%);
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
   pointer-events: none;
 }
 
-.ouiButton {
+/* ===== Fireworks Area ===== */
+.fireworksArea {
   position: fixed;
+  inset: 0;
+  cursor: crosshair;
+  z-index: 10;
+}
+
+/* ===== Intro Message ===== */
+.introMessage {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
   z-index: 100;
-  padding: 20px 50px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-  color: #3d2e0a;
+}
+
+.introMessage h1 {
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  color: #FFD700;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.introMessage p {
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Click Hint ===== */
+.clickHint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'Georgia', serif;
   font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  cursor: pointer;
-  box-shadow: 0 0 60px rgba(255, 215, 0, 0.5), 0 0 120px rgba(255, 215, 0, 0.2);
-  animation: gentlePulse 3s ease-in-out infinite;
-}
-
-@keyframes gentlePulse {
-  0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.5), 0 0 120px rgba(255, 215, 0, 0.2); }
-  50% { box-shadow: 0 0 80px rgba(255, 215, 0, 0.7), 0 0 160px rgba(255, 215, 0, 0.3); }
-}
-
-.nonButton {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   z-index: 50;
-  padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.15);
-  font-family: 'Georgia', serif;
-  font-size: 0.8rem;
 }
 
-.explosion {
+/* ===== Click Counter ===== */
+.clickCounter {
   position: fixed;
-  top: 50%;
+  top: 30px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffd700 0%, #ffaa00 30%, transparent 70%);
-  z-index: 500;
-  pointer-events: none;
+  transform: translateX(-50%);
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  z-index: 100;
 }
 
-.messageContainer {
+/* ===== Firework ===== */
+.firework {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.fireworkCenter {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sparkleTrail {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== Firework Message ===== */
+.fireworkMessage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  color: white;
+  text-shadow:
+    0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 60;
+}
+
+/* ===== Messages Sidebar ===== */
+.messagesSidebar {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 100;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.revealedMessage {
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* ===== Finale ===== */
+.finale {
   position: fixed;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: radial-gradient(ellipse at center, rgba(10, 10, 32, 0.9) 0%, rgba(10, 10, 32, 0.98) 100%);
   z-index: 200;
-  background: radial-gradient(ellipse at center, rgba(30, 20, 0, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
 }
 
-.loveMessage {
-  max-width: 600px;
-  padding: 40px;
+.finaleBurst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.finaleParticle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px currentColor;
+}
+
+.finaleMessage {
   text-align: center;
   z-index: 210;
 }
 
-.messageTitle {
+.finaleMessage h1 {
+  font-family: 'Georgia', serif;
+  font-size: 3.5rem;
+  color: #FFD700;
+  margin-bottom: 20px;
+  text-shadow:
+    0 0 30px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 215, 0, 0.3);
+}
+
+.finaleMessage p {
   font-family: 'Georgia', serif;
   font-size: 2rem;
-  color: #ffd700;
-  margin-bottom: 30px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.finaleSubtext {
+  font-size: 1rem !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin-top: 30px !important;
   font-style: italic;
 }
 
-.messageBody {
-  font-family: 'Georgia', serif;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
-  margin-bottom: 20px;
+.finaleFireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 205;
 }
 
-.messageSignature {
-  font-family: 'Georgia', serif;
-  font-size: 1.3rem;
-  color: #ffd700;
-  margin-top: 40px;
-  font-style: italic;
+.miniFirework {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 20px currentColor,
+    0 0 40px currentColor,
+    0 0 60px currentColor;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .introMessage h1 {
+    font-size: 2rem;
+  }
+
+  .introMessage p {
+    font-size: 1rem;
+  }
+
+  .clickHint {
+    font-size: 1.2rem;
+  }
+
+  .messagesSidebar {
+    right: 10px;
+    max-width: 150px;
+  }
+
+  .revealedMessage {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .finaleMessage h1 {
+    font-size: 2rem;
+  }
+
+  .finaleMessage p {
+    font-size: 1.3rem;
+  }
 }
