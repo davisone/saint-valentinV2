@@ -37,8 +37,8 @@ const PROFILES: Profile[] = [
   { id: 1, name: 'Julie', image: '/D9A58B40-06B1-4657-906E-1E22DCA3CFDA_1_105_c.jpeg', message: 'Allez c\'est parti.' },
   { id: 2, name: 'Evan', image: '/BAE90C47-2A1D-4357-9EE0-BCE33B1721EE_1_105_c.jpeg', message: 'C\'est moi ça, tu peux pas te connecter.' },
   { id: 3, name: 'Roy', image: '/IMG_4950.JPG', message: 'C\'est ton chat ca, il sait pas cliquer.' },
-  { id: 4, name: 'Nadine', icon: '👩‍🦳', message: 'Ta mère ?' },
-  { id: 5, name: 'Alexis', icon: '👦', message: 'Ton frère a son propre compte normalement.' },
+  { id: 4, name: 'Scofield', image: '/scofield.jpeg', message: 'Il s\'est encore évadé celui-là.' },
+  { id: 5, name: 'SMEG', image: '/smeg.jpg', message: 'Le frigo a son propre compte maintenant.' },
 ];
 
 interface Show {
@@ -200,7 +200,10 @@ function U05_Netflix({ mouse }: Props) {
     ]);
     setTimeout(() => {
       setEasterEggs((prev) => prev.filter((egg) => egg.id !== id));
-      setPhase('browse');
+      // Seul Julie (id: 1) peut accéder au compte
+      if (profile.id === 1) {
+        setPhase('browse');
+      }
     }, 1500);
   }, []);
 

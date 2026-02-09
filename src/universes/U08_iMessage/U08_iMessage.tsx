@@ -52,10 +52,10 @@ interface EasterEgg {
 type View = 'list' | 'chat';
 
 const CONVERSATIONS: Conversation[] = [
-  { id: 'julie', name: 'Julie', avatar: 'J', lastMessage: 'Abuse dis', time: '14:36', unread: 0, isMain: true },
+  { id: 'Evan', name: 'Evan', avatar: 'E❤️', lastMessage: 'Abuse dis', time: '14:36', unread: 0, isMain: true },
   { id: 'nadine', name: 'Nadine', avatar: 'N', lastMessage: 'Tu manges quoi ce soir?', time: '12:15', unread: 2 },
   { id: 'roy', name: 'Roy 🐱', avatar: '🐱', lastMessage: 'Miaou', time: 'Hier', unread: 0 },
-  { id: 'evan', name: 'Evan', avatar: 'E', lastMessage: 'Ok je regarde', time: 'Hier', unread: 0 },
+  { id: 'Alexis', name: 'Alexis', avatar: 'A', lastMessage: 'Ok je regarde', time: 'Hier', unread: 0 },
   { id: 'papa', name: 'Papa', avatar: 'P', lastMessage: 'Appelle moi', time: 'Lun', unread: 1 },
   { id: 'travail', name: 'Groupe Travail', avatar: '👔', lastMessage: 'Eric: Reunion a 14h', time: 'Lun', unread: 5 },
 ];
