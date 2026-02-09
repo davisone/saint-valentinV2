@@ -241,6 +241,17 @@
   font-weight: 500;
 }
 
+.contactStatus {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+}
+
+.contactInfo {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .headerActions {
   display: flex;
   gap: 16px;
@@ -511,6 +522,542 @@
   color: #fff;
   font-size: 24px;
   font-family: 'Georgia', serif;
+}
+
+/* ===== View Container ===== */
+.viewContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== Conversation List ===== */
+.conversationList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  overflow: hidden;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px 12px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.editBtn {
+  background: none;
+  border: none;
+  color: #007AFF;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.listTitle {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.newMessageBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.newMessageIcon {
+  font-size: 20px;
+}
+
+.searchContainer {
+  padding: 8px 16px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: #1c1c1e;
+  border-radius: 10px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.searchIconSvg {
+  width: 16px;
+  height: 16px;
+  color: #8E8E93;
+}
+
+.searchInput {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #8E8E93;
+}
+
+.conversations {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.conversationItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+
+.conversationItem:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mainConversation {
+  background: rgba(0, 122, 255, 0.1);
+}
+
+.convAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #3a3a3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.convAvatarMain {
+  background: linear-gradient(135deg, #ff6b8a, #ff4757);
+}
+
+.convContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.convHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.convName {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.convTime {
+  color: #8E8E93;
+  font-size: 14px;
+}
+
+.convPreview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.convMessage {
+  color: #8E8E93;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.unreadBadge {
+  background: #007AFF;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.convChevronSvg {
+  width: 12px;
+  height: 18px;
+  color: #8E8E93;
+  transform: rotate(180deg);
+  flex-shrink: 0;
+}
+
+/* ===== Contact Info Overlay ===== */
+.contactInfoOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+}
+
+.contactInfoCard {
+  background: #1c1c1e;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 430px;
+  padding: 24px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.contactInfoHeader {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.contactInfoAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b8a, #ff4757);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  margin: 0 auto 12px;
+}
+
+.contactInfoName {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.contactInfoPhone {
+  color: #8E8E93;
+  font-size: 14px;
+  margin: 0;
+}
+
+.contactInfoActions {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.contactAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.contactActionIcon {
+  width: 50px;
+  height: 50px;
+  background: #3a3a3c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.contactAction span:last-child {
+  color: #007AFF;
+  font-size: 12px;
+}
+
+.contactInfoOptions {
+  background: #2c2c2e;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.contactOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+}
+
+.contactOption:last-child {
+  border-bottom: none;
+}
+
+.optionValue {
+  color: #8E8E93;
+}
+
+.toggleBtn {
+  width: 51px;
+  height: 31px;
+  background: #34c759;
+  border-radius: 16px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggleOn {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 27px;
+  height: 27px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.closeContactBtn {
+  width: 100%;
+  padding: 16px;
+  background: #2c2c2e;
+  border: none;
+  border-radius: 12px;
+  color: #007AFF;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ===== Message Bubble with Tapback ===== */
+.messageBubbleWrapper {
+  position: relative;
+}
+
+.messageReaction {
+  position: absolute;
+  bottom: -8px;
+  background: #3a3a3c;
+  border-radius: 12px;
+  padding: 2px 6px;
+  font-size: 14px;
+  border: 2px solid #000;
+}
+
+.sent .messageReaction {
+  right: 0;
+}
+
+.received .messageReaction {
+  left: 0;
+}
+
+.tapbackMenu {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3a3a3c;
+  border-radius: 20px;
+  padding: 8px;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tapbackOption {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+
+.tapbackOption:hover {
+  transform: scale(1.2);
+}
+
+/* ===== Input Bar Wrapper ===== */
+.inputBarWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ===== Attachments Menu ===== */
+.attachmentsMenu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: #1c1c1e;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.attachmentOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.attachmentIcon {
+  width: 50px;
+  height: 50px;
+  background: #3a3a3c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.attachmentLabel {
+  color: #fff;
+  font-size: 12px;
+}
+
+/* ===== Emoji Picker ===== */
+.emojiPicker {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: #1c1c1e;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.emojiCategories {
+  display: flex;
+  padding: 8px;
+  gap: 4px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.emojiCategory {
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.emojiCategory.active {
+  background: #3a3a3c;
+}
+
+.emojiGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 8px;
+  gap: 4px;
+  overflow-y: auto;
+  max-height: 180px;
+}
+
+.emojiOption {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emojiOption:hover {
+  background: #3a3a3c;
+}
+
+/* ===== Camera Button ===== */
+.cameraBtn {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cameraIconSvg {
+  width: 24px;
+  height: 24px;
+  color: #8E8E93;
+}
+
+.inputBtn.active {
+  background: #007AFF;
+}
+
+.emojiBtn.active .emojiIconSvg {
+  color: #007AFF;
+}
+
+/* ===== Easter Egg Tooltip ===== */
+.easterEggTooltip {
+  position: fixed;
+  z-index: 1000;
+  background: #1c1c1e;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: tooltipFade 2.5s ease-in-out forwards;
+  max-width: min(90vw, 280px);
+  white-space: normal;
+  text-align: center;
+  word-wrap: break-word;
+  transform: translate(-50%, -100%) translateY(-10px);
+}
+
+@keyframes tooltipFade {
+  0% { opacity: 0; transform: translate(-50%, -100%) translateY(-10px) scale(0.9); }
+  15% { opacity: 1; transform: translate(-50%, -100%) translateY(-10px) scale(1); }
+  75% { opacity: 1; transform: translate(-50%, -100%) translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -100%) translateY(-10px) scale(0.9); }
 }
 
 /* ===== Responsive ===== */

@@ -14,6 +14,8 @@ import {
   MicIcon,
   ChevronLeft,
   MessagesIcon,
+  SearchIcon,
+  CameraIcon,
 } from '../../components/icons/SvgIcons';
 import styles from './U08_iMessage.module.css';
 
@@ -27,7 +29,78 @@ interface Message {
   sender: 'me' | 'them';
   time: string;
   status?: 'sent' | 'delivered' | 'read';
+  reaction?: string;
 }
+
+interface Conversation {
+  id: string;
+  name: string;
+  avatar: string;
+  lastMessage: string;
+  time: string;
+  unread: number;
+  isMain?: boolean;
+}
+
+interface EasterEgg {
+  id: number;
+  message: string;
+  x: number;
+  y: number;
+}
+
+type View = 'list' | 'chat';
+
+const CONVERSATIONS: Conversation[] = [
+  { id: 'julie', name: 'Julie', avatar: 'J', lastMessage: 'Abuse dis', time: '14:36', unread: 0, isMain: true },
+  { id: 'nadine', name: 'Nadine', avatar: 'N', lastMessage: 'Tu manges quoi ce soir?', time: '12:15', unread: 2 },
+  { id: 'roy', name: 'Roy 🐱', avatar: '🐱', lastMessage: 'Miaou', time: 'Hier', unread: 0 },
+  { id: 'evan', name: 'Evan', avatar: 'E', lastMessage: 'Ok je regarde', time: 'Hier', unread: 0 },
+  { id: 'papa', name: 'Papa', avatar: 'P', lastMessage: 'Appelle moi', time: 'Lun', unread: 1 },
+  { id: 'travail', name: 'Groupe Travail', avatar: '👔', lastMessage: 'Eric: Reunion a 14h', time: 'Lun', unread: 5 },
+];
+
+const TAPBACK_OPTIONS = ['❤️', '👍', '👎', '😂', '‼️', '❓'];
+
+const ATTACHMENT_OPTIONS = [
+  { id: 'camera', icon: '📷', label: 'Camera' },
+  { id: 'photos', icon: '🖼️', label: 'Photos' },
+  { id: 'stickers', icon: '😀', label: 'Stickers' },
+  { id: 'cash', icon: '💵', label: 'Apple Cash' },
+  { id: 'audio', icon: '🎵', label: 'Audio' },
+  { id: 'location', icon: '📍', label: 'Position' },
+];
+
+const EMOJI_CATEGORIES = ['😀', '❤️', '🐱', '🍕', '⚽', '🚗', '💡', '🎉'];
+
+const EMOJIS = [
+  ['😀', '😃', '😄', '😁', '😅', '😂', '🤣', '😊', '😇', '🙂', '😉', '😍'],
+  ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '💕', '💞', '💓', '💗', '💖'],
+  ['🐱', '🐶', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮'],
+  ['🍕', '🍔', '🍟', '🌭', '🍿', '🧀', '🥚', '🍳', '🥓', '🥐', '🍞', '🥖'],
+];
+
+const EASTER_EGGS: Record<string, string> = {
+  video: 'FaceTime avec Julie? Plus tard.',
+  phone: 'Elle va pas décrocher',
+  backToList: 'Reviens a la conversation!',
+  nadine: 'Nadine veut savoir si tu manges bien',
+  roy: 'Roy a faim. Comme d\'hab.',
+  evan: 'Evan est occupé',
+  papa: 'Rappelle Papa!',
+  travail: 'Encore une reunion...',
+  camera: 'Pas de selfie maintenant',
+  photos: 'Tes photos sont moches',
+  stickers: 'Les stickers c\'est pour les gamins',
+  cash: 'T\'as pas d\'argent',
+  audio: 'Ta voix est bizarre',
+  location: 'On sait ou t\'es',
+  search: 'Cherche "oui"',
+  edit: 'Y\'a rien a editer',
+  newMessage: 'T\'as qu\'une personne a qui parler',
+  contactInfo: 'Julie - L\'amour de ta vie',
+  muteToggle: 'Notifications activees',
+};
 
 const INITIAL_MESSAGES: Message[] = [
   { id: 1, text: 'Julie ?', sender: 'me', time: '14:32', status: 'read' },
@@ -64,12 +137,35 @@ function U08_iMessage({ mouse }: Props) {
   const [currentTime, setCurrentTime] = useState('14:37');
   const [isTyping, setIsTyping] = useState(false);
   const [showQuickReplies, setShowQuickReplies] = useState(false);
+  const [view, setView] = useState<View>('chat');
+  const [showAttachments, setShowAttachments] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [selectedEmojiCategory, setSelectedEmojiCategory] = useState(0);
+  const [tapbackMessage, setTapbackMessage] = useState<number | null>(null);
+  const [showContactInfo, setShowContactInfo] = useState(false);
+  const [easterEggs, setEasterEggs] = useState<EasterEgg[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const eggIdRef = useRef(0);
 
   useEffect(() => {
     startPuzzle();
   }, [startPuzzle]);
+
+  const showEasterEgg = useCallback((key: string, e: React.MouseEvent) => {
+    const message = EASTER_EGGS[key];
+    if (!message) return;
+    const id = ++eggIdRef.current;
+    setEasterEggs((prev) => [
+      ...prev,
+      { id, message, x: e.clientX, y: e.clientY },
+    ]);
+    setTimeout(() => {
+      setEasterEggs((prev) => prev.filter((egg) => egg.id !== id));
+    }, 2600);
+  }, []);
 
   // Update time
   useEffect(() => {
@@ -202,6 +298,31 @@ function U08_iMessage({ mouse }: Props) {
     }
   }, [handleSendMessage]);
 
+  const handleTapback = useCallback((messageId: number, reaction: string) => {
+    setMessages((prev) =>
+      prev.map((m) => (m.id === messageId ? { ...m, reaction } : m))
+    );
+    setTapbackMessage(null);
+  }, []);
+
+  const handleAttachmentClick = useCallback((attachmentId: string, e: React.MouseEvent) => {
+    setShowAttachments(false);
+    showEasterEgg(attachmentId, e);
+  }, [showEasterEgg]);
+
+  const handleEmojiClick = useCallback((emoji: string) => {
+    setInputValue((prev) => prev + emoji);
+    setShowEmojiPicker(false);
+  }, []);
+
+  const handleConversationClick = useCallback((conv: Conversation, e: React.MouseEvent) => {
+    if (conv.isMain) {
+      setView('chat');
+    } else {
+      showEasterEgg(conv.id, e);
+    }
+  }, [showEasterEgg]);
+
   const renderStatusBar = () => (
     <div className={styles.statusBar}>
       <div className={styles.statusLeft}>
@@ -220,25 +341,145 @@ function U08_iMessage({ mouse }: Props) {
 
   const renderHeader = () => (
     <div className={styles.header}>
-      <button className={styles.backButton}>
+      <button className={styles.backButton} onClick={(e) => { if (phase !== 'done') setView('list'); else showEasterEgg('backToList', e); }}>
         <ChevronLeft className={styles.backChevronSvg} />
         <span className={styles.backText}>Messages</span>
       </button>
-      <div className={styles.contactInfo}>
+      <button className={styles.contactInfo} onClick={() => setShowContactInfo(true)}>
         <div className={styles.avatar}>J</div>
         <div className={styles.contactDetails}>
           <span className={styles.contactName}>Julie</span>
+          <span className={styles.contactStatus}>En ligne</span>
         </div>
-      </div>
+      </button>
       <div className={styles.headerActions}>
-        <button className={styles.headerBtn}>
+        <button className={styles.headerBtn} onClick={(e) => showEasterEgg('video', e)}>
           <VideoIcon className={styles.headerIconSvg} />
         </button>
-        <button className={styles.headerBtn}>
+        <button className={styles.headerBtn} onClick={(e) => showEasterEgg('phone', e)}>
           <PhoneIcon className={styles.headerIconSvg} />
         </button>
       </div>
     </div>
+  );
+
+  const renderConversationList = () => (
+    <motion.div
+      className={styles.conversationList}
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+    >
+      <div className={styles.listHeader}>
+        <button className={styles.editBtn} onClick={(e) => showEasterEgg('edit', e)}>Modifier</button>
+        <span className={styles.listTitle}>Messages</span>
+        <button className={styles.newMessageBtn} onClick={(e) => showEasterEgg('newMessage', e)}>
+          <span className={styles.newMessageIcon}>✏️</span>
+        </button>
+      </div>
+
+      <div className={styles.searchContainer}>
+        <div className={styles.searchBar}>
+          <SearchIcon className={styles.searchIconSvg} />
+          <input
+            type="text"
+            placeholder="Rechercher"
+            className={styles.searchInput}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className={styles.conversations}>
+        {CONVERSATIONS.filter((c) =>
+          c.name.toLowerCase().includes(searchQuery.toLowerCase())
+        ).map((conv) => (
+          <motion.button
+            key={conv.id}
+            className={`${styles.conversationItem} ${conv.isMain ? styles.mainConversation : ''}`}
+            onClick={(e) => handleConversationClick(conv, e)}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className={`${styles.convAvatar} ${conv.isMain ? styles.convAvatarMain : ''}`}>
+              {conv.avatar.length === 1 ? conv.avatar : <span>{conv.avatar}</span>}
+            </div>
+            <div className={styles.convContent}>
+              <div className={styles.convHeader}>
+                <span className={styles.convName}>{conv.name}</span>
+                <span className={styles.convTime}>{conv.time}</span>
+              </div>
+              <div className={styles.convPreview}>
+                <span className={styles.convMessage}>{conv.lastMessage}</span>
+                {conv.unread > 0 && (
+                  <span className={styles.unreadBadge}>{conv.unread}</span>
+                )}
+              </div>
+            </div>
+            <ChevronLeft className={styles.convChevronSvg} />
+          </motion.button>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+  const renderContactInfo = () => (
+    <motion.div
+      className={styles.contactInfoOverlay}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setShowContactInfo(false)}
+    >
+      <motion.div
+        className={styles.contactInfoCard}
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={styles.contactInfoHeader}>
+          <div className={styles.contactInfoAvatar}>J</div>
+          <h2 className={styles.contactInfoName}>Julie</h2>
+          <p className={styles.contactInfoPhone}>+33 6 12 34 56 78</p>
+        </div>
+
+        <div className={styles.contactInfoActions}>
+          <button className={styles.contactAction} onClick={(e) => showEasterEgg('phone', e)}>
+            <span className={styles.contactActionIcon}>📞</span>
+            <span>Appeler</span>
+          </button>
+          <button className={styles.contactAction} onClick={(e) => showEasterEgg('video', e)}>
+            <span className={styles.contactActionIcon}>📹</span>
+            <span>FaceTime</span>
+          </button>
+          <button className={styles.contactAction} onClick={(e) => showEasterEgg('contactInfo', e)}>
+            <span className={styles.contactActionIcon}>ℹ️</span>
+            <span>Infos</span>
+          </button>
+        </div>
+
+        <div className={styles.contactInfoOptions}>
+          <div className={styles.contactOption}>
+            <span>Notifications</span>
+            <button className={styles.toggleBtn} onClick={(e) => showEasterEgg('muteToggle', e)}>
+              <span className={styles.toggleOn}></span>
+            </button>
+          </div>
+          <div className={styles.contactOption}>
+            <span>Partager ma position</span>
+            <span className={styles.optionValue}>Desactive</span>
+          </div>
+          <div className={styles.contactOption}>
+            <span>Envoyer en tant que SMS</span>
+            <span className={styles.optionValue}>Non</span>
+          </div>
+        </div>
+
+        <button className={styles.closeContactBtn} onClick={() => setShowContactInfo(false)}>
+          Fermer
+        </button>
+      </motion.div>
+    </motion.div>
   );
 
   const renderMessage = (message: Message) => (
@@ -249,12 +490,46 @@ function U08_iMessage({ mouse }: Props) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <div className={styles.messageBubble}>
-        <span className={styles.messageText}>{message.text}</span>
+      <div
+        className={styles.messageBubbleWrapper}
+        onDoubleClick={() => setTapbackMessage(tapbackMessage === message.id ? null : message.id)}
+      >
+        <div className={styles.messageBubble}>
+          <span className={styles.messageText}>{message.text}</span>
+        </div>
+        {message.reaction && (
+          <motion.div
+            className={styles.messageReaction}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+          >
+            {message.reaction}
+          </motion.div>
+        )}
+        <AnimatePresence>
+          {tapbackMessage === message.id && (
+            <motion.div
+              className={styles.tapbackMenu}
+              initial={{ opacity: 0, scale: 0.8, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            >
+              {TAPBACK_OPTIONS.map((emoji) => (
+                <button
+                  key={emoji}
+                  className={styles.tapbackOption}
+                  onClick={() => handleTapback(message.id, emoji)}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       {message.sender === 'me' && message.status && (
         <span className={styles.messageStatus}>
-          {message.status === 'read' ? 'Lu' : message.status === 'delivered' ? 'Distribue' : ''}
+          {message.status === 'read' ? 'Lu' : message.status === 'delivered' ? 'Distribué' : ''}
         </span>
       )}
     </motion.div>
@@ -278,32 +553,105 @@ function U08_iMessage({ mouse }: Props) {
   );
 
   const renderInputBar = () => (
-    <div className={styles.inputBar}>
-      <button className={styles.inputBtn}>
-        <PlusIcon className={styles.plusIconSvg} />
-      </button>
-      <div className={styles.inputContainer}>
-        <input
-          ref={inputRef}
-          type="text"
-          className={styles.textInput}
-          placeholder={phase === 'typing' ? 'Pose ta question...' : 'iMessage'}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={phase !== 'typing'}
-        />
-        <button className={styles.emojiBtn}><EmojiIcon className={styles.emojiIconSvg} /></button>
+    <div className={styles.inputBarWrapper}>
+      <AnimatePresence>
+        {showAttachments && (
+          <motion.div
+            className={styles.attachmentsMenu}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+          >
+            {ATTACHMENT_OPTIONS.map((opt) => (
+              <button
+                key={opt.id}
+                className={styles.attachmentOption}
+                onClick={(e) => handleAttachmentClick(opt.id, e)}
+              >
+                <span className={styles.attachmentIcon}>{opt.icon}</span>
+                <span className={styles.attachmentLabel}>{opt.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showEmojiPicker && (
+          <motion.div
+            className={styles.emojiPicker}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+          >
+            <div className={styles.emojiCategories}>
+              {EMOJI_CATEGORIES.map((cat, index) => (
+                <button
+                  key={cat}
+                  className={`${styles.emojiCategory} ${selectedEmojiCategory === index ? styles.active : ''}`}
+                  onClick={() => setSelectedEmojiCategory(index)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className={styles.emojiGrid}>
+              {(EMOJIS[selectedEmojiCategory] || EMOJIS[0]).map((emoji) => (
+                <button
+                  key={emoji}
+                  className={styles.emojiOption}
+                  onClick={() => handleEmojiClick(emoji)}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className={styles.inputBar}>
+        <button
+          className={`${styles.inputBtn} ${showAttachments ? styles.active : ''}`}
+          onClick={() => { setShowAttachments(!showAttachments); setShowEmojiPicker(false); }}
+        >
+          <PlusIcon className={styles.plusIconSvg} />
+        </button>
+        <button className={styles.cameraBtn} onClick={(e) => showEasterEgg('camera', e)}>
+          <CameraIcon className={styles.cameraIconSvg} />
+        </button>
+        <div className={styles.inputContainer}>
+          <input
+            ref={inputRef}
+            type="text"
+            className={styles.textInput}
+            placeholder={phase === 'typing' ? 'Pose ta question...' : 'iMessage'}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={phase !== 'typing'}
+          />
+          <button
+            className={`${styles.emojiBtn} ${showEmojiPicker ? styles.active : ''}`}
+            onClick={() => { setShowEmojiPicker(!showEmojiPicker); setShowAttachments(false); }}
+          >
+            <EmojiIcon className={styles.emojiIconSvg} />
+          </button>
+        </div>
+        {inputValue.trim() ? (
+          <motion.button
+            className={styles.sendBtn}
+            onClick={handleSendMessage}
+            whileTap={{ scale: 0.9 }}
+          >
+            <SendIcon className={styles.sendIconSvg} />
+          </motion.button>
+        ) : (
+          <button className={styles.micBtn} onClick={(e) => showEasterEgg('audio', e)}>
+            <MicIcon className={styles.micIconSvg} />
+          </button>
+        )}
       </div>
-      {inputValue.trim() ? (
-        <button className={styles.sendBtn} onClick={handleSendMessage}>
-          <SendIcon className={styles.sendIconSvg} />
-        </button>
-      ) : (
-        <button className={styles.micBtn}>
-          <MicIcon className={styles.micIconSvg} />
-        </button>
-      )}
     </div>
   );
 
@@ -351,30 +699,64 @@ function U08_iMessage({ mouse }: Props) {
     <UniverseShell ambientColor="#000000">
       <div className={styles.iphone}>
         {renderStatusBar()}
-        {renderHeader()}
 
-        <div className={styles.messagesContainer}>
-          <div className={styles.dateHeader}>
-            <span>Aujourd'hui</span>
-          </div>
+        <AnimatePresence mode="wait">
+          {view === 'list' ? (
+            <motion.div key="list" className={styles.viewContainer}>
+              {renderConversationList()}
+            </motion.div>
+          ) : (
+            <motion.div key="chat" className={styles.viewContainer}>
+              {renderHeader()}
 
-          {messages.map(renderMessage)}
+              <div className={styles.messagesContainer} onClick={() => { setTapbackMessage(null); setShowAttachments(false); setShowEmojiPicker(false); }}>
+                <div className={styles.dateHeader}>
+                  <span>Aujourd'hui</span>
+                </div>
 
-          <AnimatePresence>
-            {isTyping && renderTypingIndicator()}
-          </AnimatePresence>
+                {messages.map(renderMessage)}
 
-          <div ref={messagesEndRef} />
-        </div>
+                <AnimatePresence>
+                  {isTyping && renderTypingIndicator()}
+                </AnimatePresence>
 
-        <AnimatePresence>
-          {showQuickReplies && renderQuickReplies()}
+                <div ref={messagesEndRef} />
+              </div>
+
+              <AnimatePresence>
+                {showQuickReplies && renderQuickReplies()}
+              </AnimatePresence>
+
+              {renderInputBar()}
+            </motion.div>
+          )}
         </AnimatePresence>
 
-        {renderInputBar()}
+        <AnimatePresence>
+          {showContactInfo && renderContactInfo()}
+        </AnimatePresence>
       </div>
 
       {phase === 'done' && renderDone()}
+
+      {/* Easter egg tooltips */}
+      <AnimatePresence>
+        {easterEggs.map((egg) => (
+          <motion.div
+            key={egg.id}
+            className={styles.easterEggTooltip}
+            style={{
+              left: egg.x,
+              top: egg.y,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {egg.message}
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </UniverseShell>
   );
 }
