@@ -101,6 +101,149 @@
   font-weight: 500;
 }
 
+.menuDate {
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.menuDateTime {
+  display: flex;
+  align-items: center;
+}
+
+.controlCenterIcon {
+  font-size: 12px;
+}
+
+/* ===== Menu Dropdowns ===== */
+.menuDropdownContainer {
+  position: relative;
+}
+
+.menuDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 8px;
+  padding: 6px 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+.dropdownItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 6px 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background: #007aff;
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+}
+
+.shortcut {
+  color: #888;
+  font-size: 12px;
+}
+
+/* ===== Control Center ===== */
+.controlCenter {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 320px;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+.ccRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ccTile {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ccTile:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ccIcon {
+  font-size: 20px;
+}
+
+.ccLabel {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.ccStatus {
+  color: #888;
+  font-size: 11px;
+}
+
+.ccSlider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.ccSlider input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.ccSlider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 /* ===== Desktop Icons ===== */
 .desktopIcons {
   position: absolute;
@@ -811,6 +954,682 @@
 
 .playlistItem:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+.playlistItemActive {
+  background: rgba(0, 122, 255, 0.2);
+}
+
+.volumeSlider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.volumeSlider input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.volumeSlider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ===== Safari ===== */
+.safariToolbar {
+  height: 44px;
+  background: rgba(40, 40, 40, 0.9);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.safariNavBtn {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  color: #999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.safariNavBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.safariUrlBar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+.safariLock {
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.safariUrlInput {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+}
+
+.safariContent {
+  height: calc(100% - 82px);
+  overflow-y: auto;
+}
+
+.safariPage {
+  padding: 40px;
+}
+
+.safariStartPage {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.safariSection {
+  margin-bottom: 32px;
+}
+
+.safariSection h3 {
+  color: #888;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.safariBookmarks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.safariBookmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.safariBookmark:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bookmarkIcon {
+  font-size: 32px;
+}
+
+.bookmarkName {
+  color: #fff;
+  font-size: 12px;
+}
+
+.safariHistory {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.historyItem {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.historyTitle {
+  color: #fff;
+  font-size: 13px;
+}
+
+.historyUrl {
+  color: #888;
+  font-size: 11px;
+}
+
+/* ===== Calendar ===== */
+.calendarContent {
+  display: flex;
+  height: calc(100% - 38px);
+}
+
+.calendarSidebar {
+  width: 220px;
+  background: rgba(25, 25, 25, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+}
+
+.calendarMiniMonth {
+  margin-bottom: 20px;
+}
+
+.calendarNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calendarNav button {
+  background: none;
+  border: none;
+  color: #007aff;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.calendarList {
+  overflow-y: auto;
+}
+
+.calendarList h4 {
+  color: #888;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.calendarEventItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-left: 3px solid;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.calendarEventItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.eventTitle {
+  color: #fff;
+  font-size: 13px;
+}
+
+.eventTime {
+  color: #888;
+  font-size: 11px;
+}
+
+.calendarMain {
+  flex: 1;
+  padding: 16px;
+}
+
+.calendarHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+}
+
+.dayName {
+  text-align: center;
+  color: #888;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendarDay {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.calendarDay:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.calendarDay.today {
+  background: rgba(0, 122, 255, 0.2);
+  border-color: #007aff;
+}
+
+.calendarDay.valentine {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: #ff6b6b;
+}
+
+.dayNumber {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dayEvent {
+  font-size: 9px;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ===== Terminal ===== */
+.terminalHeader {
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.terminalContent {
+  background: #1a1a1a;
+  height: calc(100% - 38px);
+  padding: 12px;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+  font-size: 13px;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.terminalLine {
+  margin-bottom: 4px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.terminalInputLine {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminalPrompt {
+  color: #00ff00;
+}
+
+.terminalInput {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+/* ===== Launchpad ===== */
+.launchpadOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  z-index: 2000;
+}
+
+.launchpadSearch {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 40px;
+  width: 300px;
+}
+
+.launchpadSearchIcon {
+  width: 16px;
+  height: 16px;
+  color: #888;
+  margin-right: 8px;
+}
+
+.launchpadSearchInput {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+
+.launchpadSearchInput::placeholder {
+  color: #666;
+}
+
+.launchpadGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 30px;
+  padding: 0 80px;
+}
+
+.launchpadApp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.launchpadAppIcon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.launchpadApp .dockIconSvg {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+}
+
+.launchpadAppName {
+  color: #fff;
+  font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.launchpadDots {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  gap: 8px;
+}
+
+.launchpadDot,
+.launchpadDotActive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.launchpadDotActive {
+  background: #fff;
+}
+
+/* ===== Settings ===== */
+.settingsContent {
+  display: flex;
+  height: calc(100% - 38px);
+}
+
+.settingsSidebar {
+  width: 220px;
+  background: rgba(25, 25, 25, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 8px;
+  overflow-y: auto;
+}
+
+.settingsSidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.settingsSidebarItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.settingsSidebarItem.active {
+  background: #007aff;
+  color: #fff;
+}
+
+.settingsItemIcon {
+  font-size: 18px;
+}
+
+.settingsMain {
+  flex: 1;
+  padding: 20px;
+}
+
+.settingsHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.settingsHeaderIcon {
+  font-size: 48px;
+}
+
+.settingsHeaderTitle {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.settingsPanel {
+  padding: 16px;
+}
+
+.settingsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+}
+
+.settingsOptions {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.settingsOption {
+  padding: 6px 16px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #888;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.settingsOption.active {
+  background: #007aff;
+  color: #fff;
+}
+
+.colorPicker {
+  display: flex;
+  gap: 8px;
+}
+
+.colorDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.colorDot:first-child {
+  border-color: #fff;
+}
+
+.wifiPanel {
+  padding: 16px;
+}
+
+.wifiStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(0, 122, 255, 0.2);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.wifiNetworks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wifiNetwork {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.wifiConnected {
+  color: #00ff00;
+}
+
+.wifiLocked {
+  color: #888;
+}
+
+.settingsPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ===== Notifications ===== */
+.notification {
+  position: fixed;
+  top: 40px;
+  right: 16px;
+  width: 340px;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  z-index: 3000;
+}
+
+.notificationIcon {
+  width: 40px;
+  height: 40px;
+  background: #007aff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.notificationContent {
+  flex: 1;
+}
+
+.notificationTitle {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.notificationMessage {
+  color: #ccc;
+  font-size: 13px;
+}
+
+.notificationClose {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.notificationClose:hover {
+  color: #fff;
 }
 
 /* ===== Spotlight ===== */

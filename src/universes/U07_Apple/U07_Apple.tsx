@@ -31,7 +31,8 @@ interface Props {
 }
 
 type Phase = 'desktop' | 'done';
-type OpenApp = 'finder' | 'notes' | 'photos' | 'messages' | 'music' | 'spotlight' | null;
+type OpenApp = 'finder' | 'notes' | 'photos' | 'messages' | 'music' | 'spotlight' | 'safari' | 'calendar' | 'terminal' | 'launchpad' | 'settings' | null;
+type OpenMenu = 'apple' | 'file' | 'edit' | 'view' | 'go' | 'window' | 'help' | 'control' | null;
 
 interface FolderItem {
   id: string;
@@ -147,17 +148,111 @@ const PHOTOS_CONTENT = [
   { id: 6, icon: '📊', caption: 'Screenshot Excel (pq?)' },
 ];
 
+const SAFARI_BOOKMARKS = [
+  { id: 1, name: 'Google', url: 'google.com', icon: '🔍' },
+  { id: 2, name: 'YouTube', url: 'youtube.com', icon: '▶️' },
+  { id: 3, name: 'Amazon', url: 'amazon.fr', icon: '📦' },
+  { id: 4, name: 'Netflix', url: 'netflix.com', icon: '🎬' },
+];
+
+const SAFARI_HISTORY = [
+  { id: 1, title: 'Comment dire oui a quelqu\'un', url: 'google.com/search?q=...' },
+  { id: 2, title: 'Croquettes chat prix', url: 'amazon.fr/croquettes' },
+  { id: 3, title: 'Nadine Facebook', url: 'facebook.com/nadine' },
+];
+
+const CALENDAR_EVENTS = [
+  { id: 1, day: 14, title: 'Saint Valentin ❤️', time: 'Toute la journee', color: '#ff6b6b' },
+  { id: 2, day: 10, title: 'Rappeler Eric', time: '18:00', color: '#007aff' },
+  { id: 3, day: 15, title: 'Croquettes Roy', time: '10:00', color: '#ff9500' },
+  { id: 4, day: 20, title: 'Diner Nadine', time: '19:30', color: '#5856d6' },
+];
+
+const TERMINAL_COMMANDS: Record<string, string> = {
+  'help': 'Commandes: ls, cd, cat, pwd, whoami, clear, love',
+  'ls': 'Documents  Downloads  Desktop  secret.txt',
+  'pwd': '/Users/julie',
+  'whoami': 'julie (mais t\'es qui toi?)',
+  'cat secret.txt': 'La reponse est dans le Finder... Documents > Personnel > Secret',
+  'love': '❤️ Oui ❤️',
+  'cd': 'Ou tu veux aller comme ca?',
+  'clear': '',
+  'sudo': 'T\'es pas admin ici',
+  'rm': 'NON! On supprime rien!',
+  'exit': 'Tu peux pas partir',
+};
+
+const LAUNCHPAD_APPS = [
+  { id: 'finder', name: 'Finder', row: 0 },
+  { id: 'safari', name: 'Safari', row: 0 },
+  { id: 'messages', name: 'Messages', row: 0 },
+  { id: 'mail', name: 'Mail', row: 0 },
+  { id: 'photos', name: 'Photos', row: 0 },
+  { id: 'music', name: 'Musique', row: 0 },
+  { id: 'notes', name: 'Notes', row: 1 },
+  { id: 'calendar', name: 'Calendrier', row: 1 },
+  { id: 'settings', name: 'Preferences', row: 1 },
+  { id: 'terminal', name: 'Terminal', row: 1 },
+  { id: 'facetime', name: 'FaceTime', row: 1 },
+  { id: 'appstore', name: 'App Store', row: 1 },
+];
+
+const SETTINGS_PANELS = [
+  { id: 'general', name: 'General', icon: '⚙️' },
+  { id: 'desktop', name: 'Bureau', icon: '🖼️' },
+  { id: 'dock', name: 'Dock', icon: '⬇️' },
+  { id: 'wifi', name: 'Wi-Fi', icon: '📶' },
+  { id: 'bluetooth', name: 'Bluetooth', icon: '🔵' },
+  { id: 'sound', name: 'Son', icon: '🔊' },
+  { id: 'notifications', name: 'Notifications', icon: '🔔' },
+  { id: 'users', name: 'Utilisateurs', icon: '👤' },
+];
+
 const EASTER_EGGS: Record<string, string> = {
   apple: 'Oui c\'est une pomme, bravo',
   finder: 'La reponse est dans les dossiers',
   trash: 'Tu vas pas jeter des trucs quand meme',
-  safari: 'C\'est pas le moment de surfer',
-  mail: '3 mails de Evan non lus',
-  calendar: 'RDV: Rappeler Eric a 18h',
-  settings: 'Les reglages c\'est pas la',
-  launchpad: 'Non c\'est pas la non plus',
+  mail: '3 mails de Nadine non lus',
   wrongFile: 'C\'est pas le bon fichier...',
-  music: 'Tu peux ecouter de la musique plus tard',
+  aboutMac: 'MacBook Pro de Julie - Achete avec l\'argent de Nadine',
+  systemPrefs: 'Y\'a rien a regler',
+  appStore: 'T\'as pas besoin d\'apps',
+  recentItems: 'T\'as rien fait recemment',
+  forceQuit: 'Ca marche tres bien!',
+  sleep: 'Pas le moment de dormir',
+  restart: 'Non on redemarre pas',
+  shutdown: 'Tu quittes pas',
+  lockScreen: 'Reste la',
+  fileNew: 'Nouveau quoi?',
+  fileOpen: 'Ouvre le Finder plutot',
+  fileSave: 'Rien a sauvegarder',
+  editUndo: 'Trop tard',
+  editCopy: 'Copie de quoi?',
+  editPaste: 'Rien dans le presse-papier',
+  viewIcons: 'Deja en icones',
+  viewList: 'C\'est mieux en icones',
+  goBack: 'Tu peux pas revenir en arriere',
+  goHome: 'T\'es deja chez toi',
+  windowMinimize: 'Faut garder la fenetre ouverte',
+  helpSearch: 'L\'aide c\'est dans Notes',
+  facetime: 'Appelle pas Nadine maintenant',
+  wifi: 'WiFi: MaisonDeJulie - Mot de passe: Roy123',
+  bluetooth: 'AirPods de Julie connectes',
+  battery: 'Batterie: 69% (nice)',
+  volumeUp: 'C\'est deja assez fort',
+  volumeDown: 'On baisse pas le son',
+  brightness: 'Luminosite parfaite',
+  airdrop: 'Personne autour de toi',
+  focus: 'Mode Concentration: Desactive (comme toi)',
+  safariBack: 'Y\'a rien derriere',
+  safariForward: 'Y\'a rien devant',
+  bookmark: 'Deja dans les favoris',
+  newTab: 'Un onglet suffit',
+  calendarToday: 'Aujourd\'hui: Saint Valentin!',
+  calendarEvent: 'Evenement important!',
+  terminalError: 'Commande inconnue',
+  settingsPanel: 'Rien a configurer ici',
+  notification: 'Tu as vu la notification?',
 };
 
 const DOCK_APPS = [
@@ -200,19 +295,50 @@ function U07_Apple({ mouse }: Props) {
   const [spotlightQuery, setSpotlightQuery] = useState('');
   const [easterEggs, setEasterEggs] = useState<EasterEgg[]>([]);
   const [menuTime, setMenuTime] = useState('');
+  const [menuDate, setMenuDate] = useState('');
   const [windowPositions, setWindowPositions] = useState<Record<string, { x: number; y: number }>>({});
+  const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
+  const [safariUrl, setSafariUrl] = useState('google.com');
+  const [terminalHistory, setTerminalHistory] = useState<string[]>(['Bienvenue dans Terminal', 'Tape "help" pour les commandes']);
+  const [terminalInput, setTerminalInput] = useState('');
+  const [calendarMonth, setCalendarMonth] = useState(new Date().getMonth());
+  const [calendarYear, setCalendarYear] = useState(new Date().getFullYear());
+  const [notifications, setNotifications] = useState<{ id: number; title: string; message: string }[]>([]);
+  const [selectedNote, setSelectedNote] = useState(2);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(70);
+  const [selectedSettingsPanel, setSelectedSettingsPanel] = useState('general');
   const eggIdRef = useRef(0);
+  const notificationIdRef = useRef(0);
+  const terminalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     startPuzzle();
     const updateTime = () => {
       const now = new Date();
       setMenuTime(now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }));
+      setMenuDate(now.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }));
     };
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, [startPuzzle]);
+
+  // Show notification on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      showNotification('Messages', 'Julie: Regarde dans le Finder...');
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const showNotification = useCallback((title: string, message: string) => {
+    const id = ++notificationIdRef.current;
+    setNotifications((prev) => [...prev, { id, title, message }]);
+    setTimeout(() => {
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
+    }, 5000);
+  }, []);
 
   const showEasterEgg = useCallback((key: string, e: React.MouseEvent) => {
     const message = EASTER_EGGS[key];
@@ -261,6 +387,7 @@ function U07_Apple({ mouse }: Props) {
   }, [currentPath, findFolderByPath]);
 
   const handleDockClick = useCallback((appId: string, e: React.MouseEvent) => {
+    setOpenMenu(null);
     if (appId === 'finder') {
       setOpenApp('finder');
       setCurrentPath([]);
@@ -274,10 +401,70 @@ function U07_Apple({ mouse }: Props) {
       setOpenApp('messages');
     } else if (appId === 'music') {
       setOpenApp('music');
-    } else if (['safari', 'mail', 'calendar', 'settings', 'launchpad'].includes(appId)) {
-      showEasterEgg(appId, e);
+    } else if (appId === 'safari') {
+      setOpenApp('safari');
+    } else if (appId === 'calendar') {
+      setOpenApp('calendar');
+    } else if (appId === 'settings') {
+      setOpenApp('settings');
+    } else if (appId === 'launchpad') {
+      setOpenApp('launchpad');
+    } else if (appId === 'terminal') {
+      setOpenApp('terminal');
+    } else if (['mail', 'facetime', 'appstore'].includes(appId)) {
+      showEasterEgg(appId === 'mail' ? 'mail' : appId === 'facetime' ? 'facetime' : 'appStore', e);
     }
   }, [showEasterEgg]);
+
+  const handleMenuClick = useCallback((menu: OpenMenu, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setOpenMenu(openMenu === menu ? null : menu);
+  }, [openMenu]);
+
+  const handleMenuItemClick = useCallback((action: string, e: React.MouseEvent) => {
+    setOpenMenu(null);
+    showEasterEgg(action, e);
+  }, [showEasterEgg]);
+
+  const handleTerminalCommand = useCallback((command: string) => {
+    const cmd = command.toLowerCase().trim();
+    const response = TERMINAL_COMMANDS[cmd] || 'Commande inconnue. Tape "help"';
+
+    if (cmd === 'clear') {
+      setTerminalHistory(['Terminal efface']);
+    } else {
+      setTerminalHistory((prev) => [...prev, `$ ${command}`, response]);
+    }
+    setTerminalInput('');
+
+    // Scroll to bottom
+    setTimeout(() => {
+      terminalRef.current?.scrollTo(0, terminalRef.current.scrollHeight);
+    }, 50);
+  }, []);
+
+  const handleTerminalKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleTerminalCommand(terminalInput);
+    }
+  }, [terminalInput, handleTerminalCommand]);
+
+  const getCalendarDays = useCallback(() => {
+    const firstDay = new Date(calendarYear, calendarMonth, 1).getDay();
+    const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+    const days: (number | null)[] = [];
+
+    // Adjust for Monday start (0 = Monday, 6 = Sunday)
+    const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
+
+    for (let i = 0; i < adjustedFirstDay; i++) {
+      days.push(null);
+    }
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(i);
+    }
+    return days;
+  }, [calendarMonth, calendarYear]);
 
   const handleSpotlightSearch = useCallback(() => {
     const query = spotlightQuery.toLowerCase();
@@ -306,24 +493,136 @@ function U07_Apple({ mouse }: Props) {
   }, [showEasterEgg]);
 
   const renderMenuBar = () => (
-    <div className={styles.menuBar}>
+    <div className={styles.menuBar} onClick={() => setOpenMenu(null)}>
       <div className={styles.menuLeft}>
-        <button className={styles.appleBtn} onClick={(e) => showEasterEgg('apple', e)}>
-          <AppleLogo className={styles.appleLogoSvg} />
-        </button>
-        <span className={styles.menuAppName}>Finder</span>
-        <button className={styles.menuItem}>Fichier</button>
-        <button className={styles.menuItem}>Edition</button>
-        <button className={styles.menuItem}>Presentation</button>
-        <button className={styles.menuItem}>Aller</button>
-        <button className={styles.menuItem}>Fenetre</button>
-        <button className={styles.menuItem}>Aide</button>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.appleBtn} onClick={(e) => handleMenuClick('apple', e)}>
+            <AppleLogo className={styles.appleLogoSvg} />
+          </button>
+          {openMenu === 'apple' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('aboutMac', e)}>A propos de ce Mac</button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('systemPrefs', e)}>Preferences Systeme...</button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('appStore', e)}>App Store...</button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('recentItems', e)}>Elements recents</button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('forceQuit', e)}>Forcer a quitter...</button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('sleep', e)}>Suspendre</button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('restart', e)}>Redemarrer...</button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('shutdown', e)}>Eteindre...</button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('lockScreen', e)}>Verrouiller l'ecran</button>
+            </div>
+          )}
+        </div>
+        <span className={styles.menuAppName}>{openApp === 'safari' ? 'Safari' : openApp === 'terminal' ? 'Terminal' : 'Finder'}</span>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuItem} onClick={(e) => handleMenuClick('file', e)}>Fichier</button>
+          {openMenu === 'file' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('fileNew', e)}>Nouvelle fenetre <span className={styles.shortcut}>⌘N</span></button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('fileOpen', e)}>Ouvrir... <span className={styles.shortcut}>⌘O</span></button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('fileSave', e)}>Enregistrer <span className={styles.shortcut}>⌘S</span></button>
+            </div>
+          )}
+        </div>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuItem} onClick={(e) => handleMenuClick('edit', e)}>Edition</button>
+          {openMenu === 'edit' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('editUndo', e)}>Annuler <span className={styles.shortcut}>⌘Z</span></button>
+              <div className={styles.dropdownDivider}></div>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('editCopy', e)}>Copier <span className={styles.shortcut}>⌘C</span></button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('editPaste', e)}>Coller <span className={styles.shortcut}>⌘V</span></button>
+            </div>
+          )}
+        </div>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuItem} onClick={(e) => handleMenuClick('view', e)}>Presentation</button>
+          {openMenu === 'view' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('viewIcons', e)}>Icones</button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('viewList', e)}>Liste</button>
+            </div>
+          )}
+        </div>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuItem} onClick={(e) => handleMenuClick('go', e)}>Aller</button>
+          {openMenu === 'go' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('goBack', e)}>Precedent <span className={styles.shortcut}>⌘[</span></button>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('goHome', e)}>Dossier personnel <span className={styles.shortcut}>⇧⌘H</span></button>
+            </div>
+          )}
+        </div>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuItem} onClick={(e) => handleMenuClick('window', e)}>Fenetre</button>
+          {openMenu === 'window' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('windowMinimize', e)}>Minimiser <span className={styles.shortcut}>⌘M</span></button>
+            </div>
+          )}
+        </div>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuItem} onClick={(e) => handleMenuClick('help', e)}>Aide</button>
+          {openMenu === 'help' && (
+            <div className={styles.menuDropdown}>
+              <button className={styles.dropdownItem} onClick={(e) => handleMenuItemClick('helpSearch', e)}>Recherche</button>
+            </div>
+          )}
+        </div>
       </div>
       <div className={styles.menuRight}>
-        <button className={styles.menuIcon}><BatteryIcon className={styles.menuIconSvg} /></button>
-        <button className={styles.menuIcon}><WifiIcon className={styles.menuIconSvg} /></button>
+        <button className={styles.menuIcon} onClick={(e) => showEasterEgg('battery', e)}><BatteryIcon className={styles.menuIconSvg} level={69} /></button>
+        <button className={styles.menuIcon} onClick={(e) => showEasterEgg('wifi', e)}><WifiIcon className={styles.menuIconSvg} /></button>
         <button className={styles.menuIcon} onClick={() => setOpenApp('spotlight')}><SearchIcon className={styles.menuIconSvg} /></button>
-        <span className={styles.menuTime}>{menuTime}</span>
+        <div className={styles.menuDropdownContainer}>
+          <button className={styles.menuIcon} onClick={(e) => handleMenuClick('control', e)}>
+            <span className={styles.controlCenterIcon}>≡</span>
+          </button>
+          {openMenu === 'control' && (
+            <div className={styles.controlCenter} onClick={(e) => e.stopPropagation()}>
+              <div className={styles.ccRow}>
+                <button className={styles.ccTile} onClick={(e) => showEasterEgg('wifi', e)}>
+                  <span className={styles.ccIcon}>📶</span>
+                  <span className={styles.ccLabel}>Wi-Fi</span>
+                  <span className={styles.ccStatus}>MaisonDeJulie</span>
+                </button>
+                <button className={styles.ccTile} onClick={(e) => showEasterEgg('bluetooth', e)}>
+                  <span className={styles.ccIcon}>🔵</span>
+                  <span className={styles.ccLabel}>Bluetooth</span>
+                  <span className={styles.ccStatus}>Connecte</span>
+                </button>
+              </div>
+              <div className={styles.ccRow}>
+                <button className={styles.ccTile} onClick={(e) => showEasterEgg('airdrop', e)}>
+                  <span className={styles.ccIcon}>📡</span>
+                  <span className={styles.ccLabel}>AirDrop</span>
+                </button>
+                <button className={styles.ccTile} onClick={(e) => showEasterEgg('focus', e)}>
+                  <span className={styles.ccIcon}>🌙</span>
+                  <span className={styles.ccLabel}>Concentration</span>
+                </button>
+              </div>
+              <div className={styles.ccSlider}>
+                <span>🔆</span>
+                <input type="range" min="0" max="100" defaultValue="80" onClick={(e) => showEasterEgg('brightness', e)} />
+              </div>
+              <div className={styles.ccSlider}>
+                <span>🔊</span>
+                <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} />
+              </div>
+            </div>
+          )}
+        </div>
+        <span className={styles.menuDateTime}>
+          <span className={styles.menuDate}>{menuDate}</span>
+          <span className={styles.menuTime}>{menuTime}</span>
+        </span>
       </div>
     </div>
   );
@@ -584,7 +883,7 @@ function U07_Apple({ mouse }: Props) {
       exit={{ scale: 0.8, opacity: 0 }}
       drag
       dragMomentum={false}
-      style={{ width: 500, height: 350 }}
+      style={{ width: 500, height: 380 }}
     >
       <div className={styles.windowHeader}>
         <div className={styles.windowButtons}>
@@ -598,14 +897,24 @@ function U07_Apple({ mouse }: Props) {
       </div>
       <div className={styles.musicContent}>
         <div className={styles.musicPlayer}>
-          <div className={styles.albumArt}>❤️</div>
+          <motion.div
+            className={styles.albumArt}
+            animate={isPlaying ? { rotate: 360 } : {}}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+          >
+            ❤️
+          </motion.div>
           <div className={styles.songInfo}>
             <div className={styles.songTitle}>Notre Chanson</div>
             <div className={styles.songArtist}>Toi & Moi</div>
           </div>
           <div className={styles.musicProgress}>
             <div className={styles.musicProgressBar}>
-              <div className={styles.musicProgressFill}></div>
+              <motion.div
+                className={styles.musicProgressFill}
+                animate={isPlaying ? { width: '100%' } : {}}
+                transition={{ duration: 30, ease: 'linear' }}
+              />
             </div>
             <div className={styles.musicTime}>
               <span>1:42</span>
@@ -614,12 +923,19 @@ function U07_Apple({ mouse }: Props) {
           </div>
           <div className={styles.musicControls}>
             <button className={styles.musicBtn}><ChevronLeft className={styles.musicControlSvg} /></button>
-            <button className={styles.musicBtn}><PlayIcon className={styles.musicControlSvg} /></button>
+            <button className={styles.musicBtn} onClick={() => setIsPlaying(!isPlaying)}>
+              {isPlaying ? '⏸️' : <PlayIcon className={styles.musicControlSvg} />}
+            </button>
             <button className={styles.musicBtn}><ChevronRight className={styles.musicControlSvg} /></button>
+          </div>
+          <div className={styles.volumeSlider}>
+            <span>🔈</span>
+            <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} />
+            <span>🔊</span>
           </div>
         </div>
         <div className={styles.playlist}>
-          <div className={styles.playlistItem}>
+          <div className={`${styles.playlistItem} ${styles.playlistItemActive}`}>
             <span>🎵</span> Notre Chanson - Toi & Moi
           </div>
           <div className={styles.playlistItem}>
@@ -628,9 +944,375 @@ function U07_Apple({ mouse }: Props) {
           <div className={styles.playlistItem}>
             <span>🎵</span> La Reponse - C'est Oui
           </div>
+          <div className={styles.playlistItem}>
+            <span>🎵</span> Roy's Theme - Miaou Mix
+          </div>
         </div>
       </div>
     </motion.div>
+  );
+
+  const renderSafariWindow = () => (
+    <motion.div
+      className={styles.window}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      drag
+      dragMomentum={false}
+      style={{ width: 750, height: 500 }}
+    >
+      <div className={styles.windowHeader}>
+        <div className={styles.windowButtons}>
+          <button className={styles.windowBtnClose} onClick={() => setOpenApp(null)}></button>
+          <button className={styles.windowBtnMinimize}></button>
+          <button className={styles.windowBtnMaximize}></button>
+        </div>
+        <div className={styles.windowTitle}>
+          <span>🧭</span> Safari
+        </div>
+      </div>
+      <div className={styles.safariToolbar}>
+        <button className={styles.safariNavBtn} onClick={(e) => showEasterEgg('safariBack', e)}>
+          <ChevronLeft className={styles.navArrowSvg} />
+        </button>
+        <button className={styles.safariNavBtn} onClick={(e) => showEasterEgg('safariForward', e)}>
+          <ChevronRight className={styles.navArrowSvg} />
+        </button>
+        <div className={styles.safariUrlBar}>
+          <span className={styles.safariLock}>🔒</span>
+          <input
+            type="text"
+            value={safariUrl}
+            onChange={(e) => setSafariUrl(e.target.value)}
+            className={styles.safariUrlInput}
+          />
+        </div>
+        <button className={styles.safariNavBtn} onClick={(e) => showEasterEgg('bookmark', e)}>⭐</button>
+        <button className={styles.safariNavBtn} onClick={(e) => showEasterEgg('newTab', e)}>+</button>
+      </div>
+      <div className={styles.safariContent}>
+        <div className={styles.safariPage}>
+          <div className={styles.safariStartPage}>
+            <div className={styles.safariSection}>
+              <h3>Favoris</h3>
+              <div className={styles.safariBookmarks}>
+                {SAFARI_BOOKMARKS.map((bookmark) => (
+                  <button
+                    key={bookmark.id}
+                    className={styles.safariBookmark}
+                    onClick={() => setSafariUrl(bookmark.url)}
+                  >
+                    <span className={styles.bookmarkIcon}>{bookmark.icon}</span>
+                    <span className={styles.bookmarkName}>{bookmark.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className={styles.safariSection}>
+              <h3>Historique recent</h3>
+              <div className={styles.safariHistory}>
+                {SAFARI_HISTORY.map((item) => (
+                  <div key={item.id} className={styles.historyItem}>
+                    <span className={styles.historyTitle}>{item.title}</span>
+                    <span className={styles.historyUrl}>{item.url}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const renderCalendarWindow = () => {
+    const days = getCalendarDays();
+    const monthNames = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+    const today = new Date().getDate();
+    const isCurrentMonth = calendarMonth === new Date().getMonth() && calendarYear === new Date().getFullYear();
+
+    return (
+      <motion.div
+        className={styles.window}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        drag
+        dragMomentum={false}
+        style={{ width: 700, height: 500 }}
+      >
+        <div className={styles.windowHeader}>
+          <div className={styles.windowButtons}>
+            <button className={styles.windowBtnClose} onClick={() => setOpenApp(null)}></button>
+            <button className={styles.windowBtnMinimize}></button>
+            <button className={styles.windowBtnMaximize}></button>
+          </div>
+          <div className={styles.windowTitle}>
+            <span>📅</span> Calendrier
+          </div>
+        </div>
+        <div className={styles.calendarContent}>
+          <div className={styles.calendarSidebar}>
+            <div className={styles.calendarMiniMonth}>
+              <div className={styles.calendarNav}>
+                <button onClick={() => setCalendarMonth((m) => m === 0 ? 11 : m - 1)}>
+                  <ChevronLeft className={styles.navArrowSvg} />
+                </button>
+                <span>{monthNames[calendarMonth]} {calendarYear}</span>
+                <button onClick={() => setCalendarMonth((m) => m === 11 ? 0 : m + 1)}>
+                  <ChevronRight className={styles.navArrowSvg} />
+                </button>
+              </div>
+            </div>
+            <div className={styles.calendarList}>
+              <h4>Evenements</h4>
+              {CALENDAR_EVENTS.map((event) => (
+                <button
+                  key={event.id}
+                  className={styles.calendarEventItem}
+                  style={{ borderLeftColor: event.color }}
+                  onClick={(e) => showEasterEgg('calendarEvent', e)}
+                >
+                  <span className={styles.eventTitle}>{event.title}</span>
+                  <span className={styles.eventTime}>{event.day} - {event.time}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className={styles.calendarMain}>
+            <div className={styles.calendarHeader}>
+              <div className={styles.dayName}>Lun</div>
+              <div className={styles.dayName}>Mar</div>
+              <div className={styles.dayName}>Mer</div>
+              <div className={styles.dayName}>Jeu</div>
+              <div className={styles.dayName}>Ven</div>
+              <div className={styles.dayName}>Sam</div>
+              <div className={styles.dayName}>Dim</div>
+            </div>
+            <div className={styles.calendarGrid}>
+              {days.map((day, index) => {
+                const event = CALENDAR_EVENTS.find((e) => e.day === day);
+                return (
+                  <button
+                    key={index}
+                    className={`${styles.calendarDay} ${day === today && isCurrentMonth ? styles.today : ''} ${day === 14 ? styles.valentine : ''}`}
+                    onClick={(e) => day && showEasterEgg('calendarToday', e)}
+                  >
+                    {day && (
+                      <>
+                        <span className={styles.dayNumber}>{day}</span>
+                        {event && (
+                          <div className={styles.dayEvent} style={{ background: event.color }}>
+                            {event.title.substring(0, 10)}
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
+
+  const renderTerminalWindow = () => (
+    <motion.div
+      className={styles.window}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      drag
+      dragMomentum={false}
+      style={{ width: 600, height: 400 }}
+    >
+      <div className={`${styles.windowHeader} ${styles.terminalHeader}`}>
+        <div className={styles.windowButtons}>
+          <button className={styles.windowBtnClose} onClick={() => setOpenApp(null)}></button>
+          <button className={styles.windowBtnMinimize}></button>
+          <button className={styles.windowBtnMaximize}></button>
+        </div>
+        <div className={styles.windowTitle}>
+          Terminal - julie@MacBook-Pro
+        </div>
+      </div>
+      <div className={styles.terminalContent} ref={terminalRef}>
+        {terminalHistory.map((line, index) => (
+          <div key={index} className={styles.terminalLine}>
+            {line}
+          </div>
+        ))}
+        <div className={styles.terminalInputLine}>
+          <span className={styles.terminalPrompt}>julie@MacBook-Pro ~ $</span>
+          <input
+            type="text"
+            className={styles.terminalInput}
+            value={terminalInput}
+            onChange={(e) => setTerminalInput(e.target.value)}
+            onKeyDown={handleTerminalKeyDown}
+            autoFocus
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const renderLaunchpad = () => (
+    <motion.div
+      className={styles.launchpadOverlay}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setOpenApp(null)}
+    >
+      <div className={styles.launchpadSearch}>
+        <SearchIcon className={styles.launchpadSearchIcon} />
+        <input type="text" placeholder="Rechercher" className={styles.launchpadSearchInput} />
+      </div>
+      <div className={styles.launchpadGrid} onClick={(e) => e.stopPropagation()}>
+        {LAUNCHPAD_APPS.map((app) => (
+          <motion.button
+            key={app.id}
+            className={styles.launchpadApp}
+            onClick={(e) => {
+              setOpenApp(null);
+              setTimeout(() => handleDockClick(app.id, e), 100);
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {getDockIcon(app.id) || <div className={styles.launchpadAppIcon}>📱</div>}
+            <span className={styles.launchpadAppName}>{app.name}</span>
+          </motion.button>
+        ))}
+      </div>
+      <div className={styles.launchpadDots}>
+        <span className={styles.launchpadDotActive}></span>
+        <span className={styles.launchpadDot}></span>
+      </div>
+    </motion.div>
+  );
+
+  const renderSettingsWindow = () => (
+    <motion.div
+      className={styles.window}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      drag
+      dragMomentum={false}
+      style={{ width: 700, height: 450 }}
+    >
+      <div className={styles.windowHeader}>
+        <div className={styles.windowButtons}>
+          <button className={styles.windowBtnClose} onClick={() => setOpenApp(null)}></button>
+          <button className={styles.windowBtnMinimize}></button>
+          <button className={styles.windowBtnMaximize}></button>
+        </div>
+        <div className={styles.windowTitle}>
+          <span>⚙️</span> Preferences Systeme
+        </div>
+      </div>
+      <div className={styles.settingsContent}>
+        <div className={styles.settingsSidebar}>
+          {SETTINGS_PANELS.map((panel) => (
+            <button
+              key={panel.id}
+              className={`${styles.settingsSidebarItem} ${selectedSettingsPanel === panel.id ? styles.active : ''}`}
+              onClick={() => setSelectedSettingsPanel(panel.id)}
+            >
+              <span className={styles.settingsItemIcon}>{panel.icon}</span>
+              <span>{panel.name}</span>
+            </button>
+          ))}
+        </div>
+        <div className={styles.settingsMain}>
+          <div className={styles.settingsHeader}>
+            <span className={styles.settingsHeaderIcon}>
+              {SETTINGS_PANELS.find((p) => p.id === selectedSettingsPanel)?.icon}
+            </span>
+            <span className={styles.settingsHeaderTitle}>
+              {SETTINGS_PANELS.find((p) => p.id === selectedSettingsPanel)?.name}
+            </span>
+          </div>
+          <div className={styles.settingsPanel}>
+            {selectedSettingsPanel === 'general' && (
+              <>
+                <div className={styles.settingsRow}>
+                  <span>Apparence</span>
+                  <div className={styles.settingsOptions}>
+                    <button className={styles.settingsOption}>Clair</button>
+                    <button className={`${styles.settingsOption} ${styles.active}`}>Sombre</button>
+                    <button className={styles.settingsOption}>Auto</button>
+                  </div>
+                </div>
+                <div className={styles.settingsRow}>
+                  <span>Couleur d'accentuation</span>
+                  <div className={styles.colorPicker}>
+                    <button className={styles.colorDot} style={{ background: '#007aff' }}></button>
+                    <button className={styles.colorDot} style={{ background: '#5856d6' }}></button>
+                    <button className={styles.colorDot} style={{ background: '#ff2d55' }}></button>
+                    <button className={styles.colorDot} style={{ background: '#ff9500' }}></button>
+                  </div>
+                </div>
+              </>
+            )}
+            {selectedSettingsPanel === 'wifi' && (
+              <div className={styles.wifiPanel}>
+                <div className={styles.wifiStatus}>
+                  <span>📶</span>
+                  <span>Connecte a MaisonDeJulie</span>
+                </div>
+                <div className={styles.wifiNetworks}>
+                  <div className={styles.wifiNetwork}>
+                    <span>📶 MaisonDeJulie</span>
+                    <span className={styles.wifiConnected}>✓</span>
+                  </div>
+                  <div className={styles.wifiNetwork}>
+                    <span>📶 VoisinDeJulie</span>
+                    <span className={styles.wifiLocked}>🔒</span>
+                  </div>
+                  <div className={styles.wifiNetwork}>
+                    <span>📶 Freebox-ABC123</span>
+                    <span className={styles.wifiLocked}>🔒</span>
+                  </div>
+                </div>
+              </div>
+            )}
+            {selectedSettingsPanel !== 'general' && selectedSettingsPanel !== 'wifi' && (
+              <div className={styles.settingsPlaceholder}>
+                <span>Rien a configurer ici pour le moment</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const renderNotifications = () => (
+    <AnimatePresence>
+      {notifications.map((notif) => (
+        <motion.div
+          key={notif.id}
+          className={styles.notification}
+          initial={{ x: 400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 400, opacity: 0 }}
+          transition={{ type: 'spring', damping: 20 }}
+        >
+          <div className={styles.notificationIcon}>💬</div>
+          <div className={styles.notificationContent}>
+            <div className={styles.notificationTitle}>{notif.title}</div>
+            <div className={styles.notificationMessage}>{notif.message}</div>
+          </div>
+          <button className={styles.notificationClose} onClick={() => setNotifications((prev) => prev.filter((n) => n.id !== notif.id))}>×</button>
+        </motion.div>
+      ))}
+    </AnimatePresence>
   );
 
   const renderSpotlight = () => (
@@ -720,8 +1402,16 @@ function U07_Apple({ mouse }: Props) {
             {openApp === 'messages' && renderMessagesWindow()}
             {openApp === 'photos' && renderPhotosWindow()}
             {openApp === 'music' && renderMusicWindow()}
+            {openApp === 'safari' && renderSafariWindow()}
+            {openApp === 'calendar' && renderCalendarWindow()}
+            {openApp === 'terminal' && renderTerminalWindow()}
+            {openApp === 'settings' && renderSettingsWindow()}
             {openApp === 'spotlight' && renderSpotlight()}
+            {openApp === 'launchpad' && renderLaunchpad()}
           </AnimatePresence>
+
+          {/* Notifications */}
+          {renderNotifications()}
 
           {/* Dock */}
           {renderDock()}
