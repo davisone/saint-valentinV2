@@ -709,17 +709,15 @@
   white-space: normal;
   text-align: center;
   word-wrap: break-word;
-  /* Keep within viewport */
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%);
+  /* Position dynamically via JS - translateX centers horizontally, translateY moves above click */
+  transform: translate(-50%, -100%) translateY(-10px);
 }
 
 @keyframes tooltipFade {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
-  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  0% { opacity: 0; transform: translate(-50%, -100%) translateY(-10px) scale(0.9); }
+  15% { opacity: 1; transform: translate(-50%, -100%) translateY(-10px) scale(1); }
+  75% { opacity: 1; transform: translate(-50%, -100%) translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -100%) translateY(-10px) scale(0.9); }
 }
 
 /* ===== SVG Icons ===== */

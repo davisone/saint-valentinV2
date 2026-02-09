@@ -25,3 +25,14 @@ dist-ssr
 
 .claude
 .env
+.env.*
+!.env.example
+
+# Fichiers de projet IntelliJ
+*.iml
+
+# TypeScript build info
+*.tsbuildinfo
+
+# ESLint cache
+.eslintcache

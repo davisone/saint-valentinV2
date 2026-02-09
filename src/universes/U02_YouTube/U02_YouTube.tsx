@@ -383,11 +383,10 @@ function U02_YouTube({ mouse }: Props) {
             style={{
               left: egg.x,
               top: egg.y,
-              transform: 'translateX(-50%)',
             }}
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
             {egg.message}
           </motion.div>

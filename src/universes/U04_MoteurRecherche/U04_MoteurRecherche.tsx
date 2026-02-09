@@ -435,7 +435,6 @@ function U04_MoteurRecherche({ mouse }: Props) {
             style={{
               left: egg.x,
               top: egg.y,
-              transform: 'translate(-50%, -100%)',
             }}
           >
             {egg.message}
