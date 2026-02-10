@@ -34,7 +34,7 @@ interface Video {
 }
 
 const VIDEOS: Video[] = [
-  { id: 1, title: 'Comment savoir si sa copine est indécise', channel: 'RelationshipTips', views: '2,3M vues', date: 'il y a 3 mois', thumbnail: '👫' },
+  { id: 1, title: 'Ma copine est indécise que faire ?', channel: 'RelationshipTips', views: '2,3M vues', date: 'il y a 3 mois', thumbnail: '👫' },
   { id: 2, title: 'Mon chat Roy mange que des courgette que faire ?', channel: 'ChatsMarrants', views: '15M vues', date: 'il y a 1 an', thumbnail: '🐱' },
   { id: 3, title: 'TUTO : Comment dire Oui (simple)', channel: 'PasComplique', views: '1 vue', date: 'il y a 1 jour', isTarget: true, thumbnail: '👆' },
   { id: 4, title: 'Top 10 des remarques de con de Julie', channel: 'AuditFails', views: '8M vues', date: 'il y a 6 mois', thumbnail: '😂' },
@@ -47,8 +47,8 @@ const VIDEOS: Video[] = [
 const RECOMMENDED_VIDEOS: Video[] = [
   { id: 101, title: 'Comment répondre vite aux messages', channel: 'LifeHacks', views: '1,2M vues', date: 'il y a 2 semaines', thumbnail: '💬' },
   { id: 102, title: 'Roy le chat qui dort 20h par jour', channel: 'ChatsMarrants', views: '5M vues', date: 'il y a 3 mois', thumbnail: '😴' },
-  { id: 103, title: 'Les comptables ont-ils des sentiments ?', channel: 'Philosophie', views: '800K vues', date: 'il y a 1 mois', thumbnail: '🤔' },
-  { id: 104, title: 'Nadine vs les réseaux sociaux', channel: 'MamansTV', views: '2M vues', date: 'il y a 5 mois', thumbnail: '📱' },
+  { id: 103, title: 'Les comptables ont-ils des sous ?', channel: 'Philosophie', views: '800K vues', date: 'il y a 1 mois', thumbnail: '🤔' },
+  { id: 104, title: 'Evan est drole', channel: 'MamansTV', views: '2M vues', date: 'il y a 5 mois', thumbnail: '📱' },
   { id: 105, title: '10 façons de dire Oui sans parler', channel: 'Communication', views: '3,5M vues', date: 'il y a 2 mois', thumbnail: '🙋' },
   { id: 106, title: 'Pourquoi ton chat te fixe', channel: 'PetLovers', views: '12M vues', date: 'il y a 6 mois', thumbnail: '👀' },
 ];
@@ -57,8 +57,8 @@ const COMMENTS = [
   { id: 1, author: 'Roy_LeChatFan', avatar: '🐱', text: 'Miaou ! (traduction: super vidéo)', likes: '1,2K', time: 'il y a 2 heures' },
   { id: 2, author: 'Nadine_Officiel', avatar: '👩‍🦳', text: 'Ma fille m\'a envoyé cette vidéo, je comprends pas pourquoi 🤔', likes: '856', time: 'il y a 5 heures' },
   { id: 3, author: 'ComptableAnxieux', avatar: '📊', text: 'En tant que comptable, j\'approuve ce message. Les chiffres disent Oui.', likes: '423', time: 'il y a 1 jour' },
-  { id: 4, author: 'JulieFan2024', avatar: '❤️', text: 'Quelqu\'un peut m\'expliquer ? Je suis perdue...', likes: '2,1K', time: 'il y a 3 heures' },
-  { id: 5, author: 'EricLeFrere', avatar: '👦', text: 'Ptdr c\'est trop elle 😂😂😂', likes: '567', time: 'il y a 30 minutes' },
+  { id: 4, author: 'JuliePrec2024', avatar: '❤️', text: 'Quelqu\'un peut m\'expliquer ? Je suis perdue...', likes: '2,1K', time: 'il y a 3 heures' },
+  { id: 5, author: 'AlexisLeFrere', avatar: '👦', text: 'Ptdr c\'est trop elle 😂😂😂', likes: '567', time: 'il y a 30 minutes' },
 ];
 
 const ROMANTIC_SUGGESTIONS = [
@@ -77,12 +77,12 @@ interface EasterEgg {
 }
 
 const WRONG_VIDEO_MESSAGES = [
-  'Sérieux ? T\'es nulle là',
+  'Sérieux ?',
   'Non mais t\'as vu le titre ou pas ?',
   'Allez, concentre-toi un peu !',
   'C\'est pas ça réfléchis.',
   'Même Roy aurait trouvé',
-  'Mais non ! Cherche mieux.',
+  'Mais non !',
   'Dommage.',
   'Tu fais exprès ?',
 ];
@@ -105,7 +105,7 @@ const EASTER_EGGS: Record<string, string> = {
   settings: 'Les paramètres vont pas t\'aider',
   fullscreen: 'Tu veux voir ma tête en grand ?',
   volume: 'Monte le son pour entendre "Oui" 🔊',
-  dislike: 'Eh ! Sois gentille quand même...',
+  dislike: 'Eh ! Sois gentille quand même',
   share: 'Partager quoi ? T\'as même pas liké !',
   more: 'Plus d\'options = plus de temps perdu',
   subscribe: 'T\'abonner ? Commence par liker !',
@@ -647,7 +647,7 @@ function U02_YouTube({ mouse }: Props) {
         <div className={styles.doneHeart}>
           <ThumbUpIcon className={styles.doneThumbSvg} filled />
         </div>
-        <p className={styles.doneMessage}>Ba enfin ! T'as mis le temps quand même...</p>
+        <p className={styles.doneMessage}>Ba enfin ! T'as mis le temps quand même</p>
       </div>
     </motion.div>
   );

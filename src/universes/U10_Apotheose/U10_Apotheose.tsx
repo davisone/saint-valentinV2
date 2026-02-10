@@ -50,7 +50,7 @@ const HIDDEN_MESSAGES = [
   "C'était pas si dur",
   "Enfin...",
   "Je t'aime",
-  "Bonne Saint-Valentin",
+  "Veux tu être ma Valentine ?",
 ];
 
 function U10_Apotheose({ mouse }: Props) {

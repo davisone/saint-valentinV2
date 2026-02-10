@@ -71,7 +71,7 @@ const SPLASH_TEXTS = [
   'Achievement: T\'as trouve un bouton!',
   'Comptable vs Creeper: Creeper gagne',
   'Mode peaceful pour les nuls!',
-  'Julie a demandé où t\'es!',
+  'Evan demande où t\'es!',
   'Pas de wifi dans le Nether!',
   'Alt+F4 pour diamants infinis!',
   'Le loup de Roy!',

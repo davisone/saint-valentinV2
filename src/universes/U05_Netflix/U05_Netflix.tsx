@@ -38,7 +38,7 @@ const PROFILES: Profile[] = [
   { id: 2, name: 'Evan', image: '/BAE90C47-2A1D-4357-9EE0-BCE33B1721EE_1_105_c.jpeg', message: 'C\'est moi ça, tu peux pas te connecter.' },
   { id: 3, name: 'Roy', image: '/IMG_4950.JPG', message: 'C\'est ton chat ca, il sait pas cliquer.' },
   { id: 4, name: 'Scofield', image: '/scofield.jpeg', message: 'Il s\'est encore évadé celui-là.' },
-  { id: 5, name: 'SMEG', image: '/smeg.jpg', message: 'Le frigo a son propre compte maintenant.' },
+  { id: 5, name: 'SMEG', image: '/smeg.jpg', message: 'Le frigo a son propre compte ?.' },
 ];
 
 interface Show {
@@ -60,14 +60,14 @@ const CONTINUE_WATCHING: Show[] = [
 const TOP_10: Show[] = [
   { id: 10, title: 'Dis Oui - Le Film', isTarget: true, emoji: '❤️' },
   { id: 11, title: 'Roy : Le Documentaire', emoji: '🐱' },
-  { id: 12, title: 'Nadine Appelle (3h)', emoji: '📞' },
+  { id: 12, title: 'Nadine s\'inquiète', emoji: '📞' },
   { id: 13, title: 'Comptable Anonyme', emoji: '📊' },
   { id: 14, title: 'La Saga Du Kinder', emoji: '🍫' },
   { id: 15, title: 'Les Mystères de Julie', emoji: '🔮' },
   { id: 16, title: 'Eric vs Le Monde', emoji: '🌍' },
   { id: 17, title: 'Alexis En Cuisine', emoji: '👨‍🍳' },
   { id: 18, title: 'Le Chat Qui Fixe', emoji: '👀' },
-  { id: 19, title: 'Minuit À Paris (Avec Nadine)', emoji: '🗼' },
+  { id: 19, title: 'En bas de la Tour Eiffel (avec Evan)', emoji: '🗼' },
 ];
 
 const TRENDING: Show[] = [
@@ -121,7 +121,7 @@ interface EasterEgg {
 
 const EASTER_EGGS: Record<string, string> = {
   logo: 'Netflix t\'es pas là pour mater des séries',
-  bell: 'Nadine a liké ta story il y a 3h',
+  bell: 'Evan a liké ta story il y a 3h',
   wrongShow: 'Non c\'est pas celui-là, continue.',
   heroInfo: 'C\'est pas là qu\'il faut cliquer',
   trending: 'Roy est plus tendance que toi',

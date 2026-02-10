@@ -33,7 +33,7 @@ const SUGGESTIONS = [
   { text: 'comment dire oui', romantic: true },
   { text: 'meteo paris', romantic: false },
   { text: 'chat qui dort toute la journée', romantic: false },
-  { text: 'recette gâteau chocolat', romantic: false },
+  { text: 'recette kinder country', romantic: false },
   { text: 'valentin cadeau idée', romantic: true },
   { text: 'audit consultant avis', romantic: false },
   { text: 'A quoi sert le million si tu prend perpet ?', romantic: true },
@@ -57,14 +57,14 @@ const GOOGLE_APPS = [
 const TRENDING_SEARCHES = [
   { text: 'Saint Valentin idées', trend: '🔥 Tendance' },
   { text: 'Roy chat mignon', trend: '+500%' },
-  { text: 'Nadine recettes', trend: '+200%' },
+  { text: 'Evan beuteu', trend: '+200%' },
   { text: 'Comment dire oui', trend: '🔥 Tendance' },
 ];
 
 const RELATED_SEARCHES = [
   'comment dire oui a quelqu\'un',
   'saint valentin 2025',
-  'idee cadeau copine',
+  'idee cadeau copin',
   'message romantique',
   'declaration amour',
   'surprise saint valentin',
@@ -73,8 +73,8 @@ const RELATED_SEARCHES = [
 const KNOWLEDGE_PANEL = {
   title: 'Saint-Valentin',
   subtitle: 'Fête des amoureux',
-  description: 'La Saint-Valentin est une fête célébrée le 14 février. C\'est l\'occasion de dire "Oui" à la personne qu\'on aime...',
-  date: '14 février 2025',
+  description: 'La Saint-Valentin est une fête célébrée le 14 février. C\'est l\'occasion de dire "Oui" à la personne qu\'on aime',
+  date: '14 février 2026',
   facts: [
     { label: 'Date', value: '14 février' },
     { label: 'Type', value: 'Fête des amoureux' },
@@ -656,7 +656,7 @@ function U04_MoteurRecherche({ mouse }: Props) {
                       const id = ++eggIdRef.current;
                       setEasterEggs((prev) => [
                         ...prev,
-                        { id, message: 'Continue de chercher...', x: e.clientX, y: e.clientY },
+                        { id, message: 'Continue de chercher', x: e.clientX, y: e.clientY },
                       ]);
                       setTimeout(() => {
                         setEasterEggs((prev) => prev.filter((egg) => egg.id !== id));
